@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList, ListRenderItemInfo, Pressable, } from
 import MainContainer from '../../CommonComponents/MainContainer/MainContainer';
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
-import { navigate } from '../../Navigation/Navigator';
+import { navigate } from '../../Navigators/Navigator';
 
 interface IDashboardProps { }
 

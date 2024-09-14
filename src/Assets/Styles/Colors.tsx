@@ -6,5 +6,10 @@ export const Colors = {
     StatusYellowColor: "#FFC71B",
     BlushPink: "#E87AA3",
     DefaultBgColor: "#7e79a8ab",
-    DefaultColor: "#8D2020"
+    DefaultColor: "#8D2020",
+    defaultRedColor: "red",
+    Defaultblack: 'black',
+    DarkGreyColor: '#FFFFFF',
+    NormalGreyColor: '#FFFFFF',
+    secondaryColor: '#FFFFFF',
 };
