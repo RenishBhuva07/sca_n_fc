@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, ListRenderItemInfo, Pressable, } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable, } from 'react-native';
 import MainContainer from '../../CommonComponents/MainContainer/MainContainer';
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';

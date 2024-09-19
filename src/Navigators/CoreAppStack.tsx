@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Splash from '../Screens/Splash/Splash';
 import Dashboard from '../Screens/Dashboard/Dashboard';
+import Intro from '../Screens/Intro/Intro';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +14,7 @@ const CoreAppStack = () => {
       initialRouteName="Splash">
       <Stack.Screen name={'Splash'} component={Splash} />
       <Stack.Screen name={'Dashboard'} component={Dashboard} />
+      <Stack.Screen name={'Intro'} component={Intro} />
     </Stack.Navigator>
   );
 };

@@ -12,4 +12,8 @@ export const Colors = {
     DarkGreyColor: '#FFFFFF',
     NormalGreyColor: '#FFFFFF',
     secondaryColor: '#FFFFFF',
+
+    DefaultYellow: '#FDB623',
+    CharcoalGray: "#333333",
+    LightCharcoalGray: "#3E3E42",
 };
