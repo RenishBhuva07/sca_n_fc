@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Pressable, } from 'react-native';
 import MainContainer from '../../CommonComponents/MainContainer/MainContainer';
 import { Colors } from '../../Assets/Styles/Colors';
@@ -45,47 +45,8 @@ const Dashboard = (props: IDashboardProps) => {
             {
                 project_name: "project_ten",
             },
-            {
-                project_name: "project_eleven",
-            },
-            {
-                project_name: "project_twelve",
-            },
-            {
-                project_name: "project_thirteen",
-            },
-            {
-                project_name: "project_foruteen",
-            },
-            {
-                project_name: "project_fifteen",
-            },
-            {
-                project_name: "project_sixteen",
-            },
-            {
-                project_name: "project_seventeen",
-            },
-            {
-                project_name: "project_eighteen",
-            },
-            {
-                project_name: "project_ninteen",
-            },
-            {
-                project_name: "project_twenty",
-            },
-            {
-                project_name: "project_twentyone",
-            },
-            {
-                project_name: "project_twentytwo",
-            },
         ],
     });
-
-    useEffect(() => {
-    }, []);
 
     const renderProjects = ({ item, index }: any) => {
         console.error("item__---====>>>", item, index);

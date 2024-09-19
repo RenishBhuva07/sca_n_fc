@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, StatusBar, TouchableOpacity, Dimensions 
 import { IMAGES } from "../../Assets/Images";
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
+import { navigate } from '../../Navigators/Navigator';
 const screenWidth = Dimensions.get("window").width;
 
 
@@ -12,9 +13,9 @@ interface IIntroProps {
 
 const Intro = (props: IIntroProps) => {
 
-    // useEffect(() => {
-    //     // props.navigation.navigate('Dashboard')
-    // }, [])
+    const navigateToDashboard = () => {
+        navigate('Dashboard');
+    };
 
     return (
         <View style={styles.container}>
@@ -42,7 +43,10 @@ const Intro = (props: IIntroProps) => {
             <View style={{
                 position: 'relative',
             }}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => navigateToDashboard()}
+                    activeOpacity={0.7}>
                     <Image style={styles.buttonIcon} source={IMAGES.Ic_Arrow} />
                 </TouchableOpacity>
                 <Image style={{
