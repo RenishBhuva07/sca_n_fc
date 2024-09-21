@@ -62,11 +62,10 @@ const BottomTab = (props: IBottomTabProps) => {
                                 alignItems: 'center',
                             }}>
                                 <Image style={{
-                                    width: ResponsivePixels.size25,
-                                    height: ResponsivePixels.size25,
+                                    width: ResponsivePixels.size30,
+                                    height: ResponsivePixels.size30,
                                     tintColor: color,
                                     resizeMode: 'contain',
-                                    marginBottom: ResponsivePixels.size5,
                                 }} source={IMAGES.ic_Generate_QR} />
                                 <Text style={{
                                     color: color,
@@ -127,8 +126,10 @@ const BottomTab = (props: IBottomTabProps) => {
                                 alignItems: 'center',
                             }}>
                                 <Image style={{
-                                    width: ResponsivePixels.size40,
-                                    height: ResponsivePixels.size40,
+                                    marginTop: ResponsivePixels.size5,
+                                    width: ResponsivePixels.size45,
+                                    height: ResponsivePixels.size45,
+                                    resizeMode: 'contain',
                                 }} source={IMAGES.ic_Scan_QR} />
                             </View>
                         </TouchableOpacity>
@@ -148,7 +149,6 @@ const BottomTab = (props: IBottomTabProps) => {
                                     height: ResponsivePixels.size30,
                                     tintColor: color,
                                     resizeMode: 'contain',
-                                    marginBottom: ResponsivePixels.size2,
                                 }} source={IMAGES.ic_History} />
                                 <Text style={{
                                     color: color,
@@ -163,7 +163,7 @@ const BottomTab = (props: IBottomTabProps) => {
                         );
                     },
                     tabBarIconStyle: {
-                        marginBottom: -7,
+                        marginBottom: -9,
                     },
                     tabBarHideOnKeyboard: true,
                     tabBarShowLabel: false,

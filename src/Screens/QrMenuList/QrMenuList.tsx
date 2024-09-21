@@ -16,76 +16,64 @@ const QrMenuList = (props: IQrMenuListProps) => {
     const [state, setState] = useState<IQrMenuListState>({
         qrMenuList: [
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 1,
+                title: "Text",
+                icon: IMAGES.ic_Text,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 2,
+                title: "Website",
+                icon: IMAGES.ic_Website,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 3,
+                title: "Wi-Fi",
+                icon: IMAGES.ic_Wi_Fi,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 4,
+                title: "Event",
+                icon: IMAGES.ic_Event,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 5,
+                title: "Contact",
+                icon: IMAGES.ic_Contact,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 6,
+                title: "Business",
+                icon: IMAGES.ic_Business,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 7,
+                title: "Location",
+                icon: IMAGES.ic_Location,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 8,
+                title: "Whatsapp",
+                icon: IMAGES.ic_Whatsapp,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 9,
+                title: "Email",
+                icon: IMAGES.ic_Email,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 10,
+                title: "Twitter",
+                icon: IMAGES.ic_Twitter,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 11,
+                title: "Instagram",
+                icon: IMAGES.ic_Instagram,
             },
             {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
-            },
-            {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
-            },
-            {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
-            },
-            {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
-            },
-            {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
-            },
-            {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
-            },
-            {
-                title: "Parth",
-                icon: IMAGES.ic_Scan_QR,
+                id: 12,
+                title: "Telephone",
+                icon: IMAGES.ic_Telephone,
             },
         ],
     });
@@ -94,19 +82,22 @@ const QrMenuList = (props: IQrMenuListProps) => {
         return (
             <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("Details", { name: item?.title })}>
                 <View style={{
-                    height: 86,
-                    width: 86,
+                    height: 90,
+                    width: 90,
                     justifyContent: 'center',
                     alignItems: 'center',
                     backgroundColor: Colors.CharcoalGray,
                     borderRadius: 8,
                     borderWidth: 2,
                     borderColor: Colors.DefaultYellow,
+                    position: 'relative',
                 }}>
                     <Text style={styles.projectListItemText}>{item?.title}</Text>
                     <Image style={{
                         width: 40,
                         height: 40,
+                        tintColor: Colors.SoftSilver,
+                        resizeMode: 'contain'
                     }} source={item?.icon} />
                 </View>
             </Pressable>
@@ -181,6 +172,12 @@ const styles = StyleSheet.create({
         fontSize: ResponsivePixels.size12,
         backgroundColor: Colors.DefaultYellow,
         fontWeight: '600',
+        position: 'absolute',
+        top: -12,
+        paddingVertical: ResponsivePixels.size2,
+        paddingHorizontal: ResponsivePixels.size7,
+        borderRadius: 4,
+        zIndex: 5,
     }
 });
 
