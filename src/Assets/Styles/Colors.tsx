@@ -15,6 +15,7 @@ export const Colors = {
 
     DefaultYellow: '#FDB623',
     CharcoalGray: "#333333",
+    CharcoalGrayOpacity: "#525252",
     LightCharcoalGray: "#3E3E42",
     SoftSilver: "##D9D9D9",
 };

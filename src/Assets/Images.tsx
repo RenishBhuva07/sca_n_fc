@@ -21,4 +21,5 @@ export const IMAGES = {
     ic_Twitter: require("../Assets/Images/ic_Twitter.png"),
     ic_Instagram: require("../Assets/Images/ic_Instagram.png"),
     ic_Telephone: require("../Assets/Images/ic_Telephone.png"),
+    ic_Line_Menu: require("../Assets/Images/ic_Line_Menu.png"),
 }
