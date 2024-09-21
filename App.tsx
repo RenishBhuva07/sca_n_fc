@@ -5,9 +5,9 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { PropsWithChildren } from 'react';
-import { View } from 'react-native';
+import { LogBox, View } from 'react-native';
 import { Colors } from './src/Assets/Styles/Colors';
 import { navigationRef } from './src/Navigators/Navigator';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -22,6 +22,11 @@ type SectionProps = PropsWithChildren<{
 }>;
 
 function App(): React.JSX.Element {
+
+  useEffect(() => {
+    LogBox.ignoreAllLogs(true);
+  }, [])
+
 
   return (
     <View

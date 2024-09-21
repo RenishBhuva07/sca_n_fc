@@ -10,7 +10,7 @@ export interface MainContainerProps {
   header: any;
   isTabs: boolean;
   children: any;
-  mainContainerBackgroundColor: any;
+  mainContainerStatusBarBGColor: any;
   bottomBarColor: any;
   topBarColor: any;
   backgroundImageHeight: any;
@@ -24,7 +24,7 @@ export interface IState {
 
 export class MainContainer extends Component<MainContainerProps, IState> {
   override render() {
-    const { loading, header, isTabs, children, mainContainerBackgroundColor, backgroundImageHeight, backgroundImage, bottomBarColor, topBarColor, backgroundImageColor } =
+    const { loading, header, isTabs, children, mainContainerStatusBarBGColor, backgroundImageHeight, backgroundImage, bottomBarColor, topBarColor, backgroundImageColor } =
       this.props;
     return (
       <RNKeyboardAvoidingView isTabs={isTabs ? isTabs : undefined}>
@@ -40,7 +40,7 @@ export class MainContainer extends Component<MainContainerProps, IState> {
         {header ? (
           <>
             <SafeAreaView style={{ paddingTop: !isIos() ? ResponsivePixels.size20 : null, backgroundColor: topBarColor ? topBarColor : 'transparent', }}>
-              <StatusBar barStyle={'dark-content'} backgroundColor={mainContainerBackgroundColor || 'transparent'} />
+              <StatusBar barStyle={'dark-content'} backgroundColor={mainContainerStatusBarBGColor || 'transparent'} />
               <CustomHeader backgroundColor={"transparent"} {...header} />
             </SafeAreaView>
           </>
@@ -48,7 +48,7 @@ export class MainContainer extends Component<MainContainerProps, IState> {
           <SafeAreaView style={{ backgroundColor: "transparent" }}>
             <StatusBar barStyle={'dark-content'} translucent backgroundColor={'transparent'} />
           </SafeAreaView>)}
-        <StatusBar barStyle={'dark-content'} translucent backgroundColor={mainContainerBackgroundColor || 'transparent'} />
+        <StatusBar barStyle={'dark-content'} translucent backgroundColor={mainContainerStatusBarBGColor || 'transparent'} />
         <SafeAreaView style={{ flex: 1 }}>
           <View
             style={{

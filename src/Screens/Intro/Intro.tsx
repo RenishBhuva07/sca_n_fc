@@ -47,7 +47,7 @@ const Intro = (props: IIntroProps) => {
                     style={styles.button}
                     onPress={() => navigateToDashboard()}
                     activeOpacity={0.7}>
-                    <Image style={styles.buttonIcon} source={IMAGES.Ic_Arrow} />
+                    <Image style={styles.buttonIcon} source={IMAGES.ic_Arrow} />
                 </TouchableOpacity>
                 <Image style={{
                     height: ResponsivePixels.size160,

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Pressable, } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable, StatusBar, } from 'react-native';
 import MainContainer from '../../CommonComponents/MainContainer/MainContainer';
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
-import { navigate } from '../../Navigators/Navigator';
+import { goBack, navigate } from '../../Navigators/Navigator';
+import { IMAGES } from '../../Assets/Images';
 
 interface IDashboardProps { }
 
@@ -69,23 +70,10 @@ const Dashboard = (props: IDashboardProps) => {
 
 
     return (
-        <MainContainer
-            bottomBarColor={Colors.RoyalPurple}
-            mainContainerBackgroundColor={Colors.RoyalPurple}
-            header={{
-                title: "Projects",
-                titleColor: Colors.DefaultWhite,
-                left: {
-                    // image: IMAGES.ic_BackBlackIcon,
-                    // color: Colors.DefaultWhite,
-                    // onPress: () => goBack(),
-                },
-            }}
-        // backgroundImage={IMAGES.ic_MainImg}
-        // backgroundImageHeight={280}
-        >
+        <>
+            {/* <StatusBar backgroundColor={Colors.DefaultYellow} networkActivityIndicatorVisible barStyle={'default'} /> */}
             <View style={styles.wrapper}>
-                <View style={styles.container}>
+                {/* <View style={styles.container}>
                     <FlatList
                         scrollEnabled
                         data={state.projectData}
@@ -103,15 +91,17 @@ const Dashboard = (props: IDashboardProps) => {
                             paddingVertical: 20,
                         }}
                     />
-                </View>
+                </View> */}
             </View>
-        </MainContainer>
+        </>
     );
 };
 
 const styles = StyleSheet.create({
     wrapper: {
-        backgroundColor: Colors.RoyalPurple,
+        flex: 1,
+        backgroundColor: Colors.CharcoalGray,
+        opacity: 0.84,
     },
     container: {
         borderTopRightRadius: 16,
