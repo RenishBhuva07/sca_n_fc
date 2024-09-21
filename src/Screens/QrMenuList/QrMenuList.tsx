@@ -1,0 +1,187 @@
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, Pressable, Image, } from 'react-native';
+import { Colors } from '../../Assets/Styles/Colors';
+import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
+import { navigate } from '../../Navigators/Navigator';
+import { IMAGES } from '../../Assets/Images';
+
+interface IQrMenuListProps { }
+
+interface IQrMenuListState {
+    qrMenuList: Array<any>;
+}
+
+const QrMenuList = (props: IQrMenuListProps) => {
+
+    const [state, setState] = useState<IQrMenuListState>({
+        qrMenuList: [
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+            {
+                title: "Parth",
+                icon: IMAGES.ic_Scan_QR,
+            },
+        ],
+    });
+
+    const renderProjects = ({ item, index }: any) => {
+        return (
+            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("Details", { name: item?.title })}>
+                <View style={{
+                    height: 86,
+                    width: 86,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: Colors.CharcoalGray,
+                    borderRadius: 8,
+                    borderWidth: 2,
+                    borderColor: Colors.DefaultYellow,
+                }}>
+                    <Text style={styles.projectListItemText}>{item?.title}</Text>
+                    <Image style={{
+                        width: 40,
+                        height: 40,
+                    }} source={item?.icon} />
+                </View>
+            </Pressable>
+        )
+    };
+    const renderStickyHeaderComponent = () => {
+        return (
+            <View style={{
+                backgroundColor: 'red',
+            }}>
+                <Text style={{ backgroundColor: 'red', color: Colors.DefaultGreenColor }}>Hey</Text>
+            </View>
+        )
+    };
+
+
+
+    return (
+        <>
+            {/* <StatusBar backgroundColor={'transparent'} networkActivityIndicatorVisible barStyle={'light-content'} /> */}
+            <View style={styles.wrapper}>
+                <View style={styles.container}>
+                    <FlatList
+                        scrollEnabled
+                        data={state.qrMenuList}
+                        renderItem={(item) => renderProjects(item)}
+                        keyExtractor={(item) => item.cca3}
+                        contentContainerStyle={styles.projectList}
+                        numColumns={3}
+                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
+
+                        stickyHeaderHiddenOnScroll={true}
+                        // StickyHeaderComponent={() => renderStickyHeaderComponent()}
+                        invertStickyHeaders={true}
+                        style={{
+                            paddingVertical: 20,
+                        }}
+                    />
+                </View>
+            </View>
+        </>
+    );
+};
+
+const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        backgroundColor: Colors.CharcoalGray,
+        opacity: 0.84,
+    },
+    container: {
+        borderTopRightRadius: 16,
+        borderTopLeftRadius: 16,
+    },
+    projectList: {
+        flexDirection: "row",
+        flexWrap: 'wrap',
+        width: '100%',
+        paddingHorizontal: 20,
+    },
+    projectListItem: {
+        marginHorizontal: 5,
+        marginVertical: ResponsivePixels.size40,
+        minWidth: '30.5%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    projectListItemText: {
+        textAlign: 'center',
+        color: Colors.CharcoalGray,
+        fontSize: ResponsivePixels.size12,
+        backgroundColor: Colors.DefaultYellow,
+        fontWeight: '600',
+    }
+});
+
+export default QrMenuList;

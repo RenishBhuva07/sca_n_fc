@@ -14,7 +14,7 @@ interface IIntroProps {
 const Intro = (props: IIntroProps) => {
 
     const navigateToDashboard = () => {
-        navigate('Dashboard');
+        navigate('BottomTab');
     };
 
     return (
