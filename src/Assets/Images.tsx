@@ -24,4 +24,5 @@ export const IMAGES = {
     ic_Line_Menu: require("../Assets/Images/ic_Line_Menu.png"),
     ic_Scan_History: require("../Assets/Images/ic_Scan_History.png"),
     bg_Background_Design: require("../Assets/Images/bg_Background_Design.png"),
+    ic_Delete: require("../Assets/Images/ic_Delete.png"),
 }

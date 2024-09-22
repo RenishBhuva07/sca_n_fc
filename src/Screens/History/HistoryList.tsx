@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Pressable, Image, } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
-import { navigate } from '../../Navigators/Navigator';
+import { IMAGES } from '../../Assets/Images';
 
 interface IHistoryListProps {
     historyToRender: string;
@@ -14,28 +14,32 @@ const HistoryList = (props: IHistoryListProps) => {
 
     // const [state, setState] = useState<IHistoryListState>({});
 
-    const renderProjects = ({ item, index }: any) => {
-        console.error('renderProjects__', item);
+    const renderHistory = ({ item, index }: any) => {
         return (
-            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("Details", { name: item?.title })}>
-                <View style={{
-                    height: 90,
-                    width: 90,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: Colors.CharcoalGray,
-                    borderRadius: 8,
-                    borderWidth: 2,
-                    borderColor: Colors.DefaultYellow,
-                    position: 'relative',
-                }}>
-                    <Text style={styles.projectListItemText}>{item?.title}</Text>
+            <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { }}>
+
+                <View style={{ marginTop: ResponsivePixels.size7 }}>
+                    <Image style={{ width: ResponsivePixels.size40, height: ResponsivePixels.size40, resizeMode: "contain" }} source={item?.icon} />
+                </View>
+
+                <View style={{}}>
+                    <Text style={{
+                        color: Colors.DefaultWhite,
+                        marginBottom: ResponsivePixels.size8,
+                    }}>{item?.title}</Text>
+                    <Text style={{
+                        color: Colors.NeutralSilver
+                    }}>{item?.subTitle}</Text>
+                </View>
+
+                <View style={{ alignItems: 'flex-end' }}>
                     <Image style={{
-                        width: 40,
-                        height: 40,
-                        tintColor: Colors.SoftSilver,
+                        width: ResponsivePixels.size16,
+                        height: ResponsivePixels.size20,
                         resizeMode: 'contain',
-                    }} source={item?.icon} />
+                        marginBottom: ResponsivePixels.size8,
+                    }} source={IMAGES.ic_Delete} />
+                    <Text style={{ color: Colors.NeutralSilver }}>{item?.created_date}</Text>
                 </View>
             </Pressable>
         )
@@ -46,64 +50,57 @@ const HistoryList = (props: IHistoryListProps) => {
     } = props;
     console.log(historyToRender);
     return (
-        <View style={{ marginTop: ResponsivePixels.size100 }}>
-            <View style={styles.wrapper}>
-                <View style={styles.container}>
-                    <FlatList
-                        scrollEnabled
-                        data={historyToRender}
-                        renderItem={(item) => renderProjects(item)}
-                        contentContainerStyle={styles.projectList}
-                        numColumns={3}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-
-                        stickyHeaderHiddenOnScroll={true}
-                        invertStickyHeaders={true}
-                        style={{
-                            // paddingVertical: 20,
-                        }}
-                    />
-                </View>
-            </View>
+        <View style={styles.container}>
+            <FlatList
+                scrollEnabled
+                data={historyToRender}
+                renderItem={(item) => renderHistory(item)}
+                contentContainerStyle={styles.historyListWrapper}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                stickyHeaderHiddenOnScroll={true}
+                invertStickyHeaders={true}
+                numColumns={1}
+                style={{
+                    // paddingVertical: 20,
+                }}
+            />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    wrapper: {
+    shadowStyle: {
+        shadowColor: Colors.DefaultYellow,
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.82,
+        shadowRadius: 3.5,
+        elevation: 5,
     },
     container: {
-        borderTopRightRadius: 16,
-        borderTopLeftRadius: 16,
+        marginTop: ResponsivePixels.size100
     },
-    projectList: {
+    historyListWrapper: {
         flexDirection: "row",
         flexWrap: 'wrap',
-        width: '100%',
         paddingHorizontal: 20,
-        paddingBottom: 120,
+        paddingBottom: 150,
     },
-    projectListItem: {
-        marginHorizontal: 5,
-        marginVertical: ResponsivePixels.size40,
-        minWidth: '30.5%',
-        justifyContent: 'center',
+    historyListItem: {
+        width: '100%',
+        flexDirection: "row",
+        justifyContent: 'space-between',
         alignItems: 'center',
+        backgroundColor: Colors.CharcoalGray,
+        opacity: 1,
+        marginVertical: ResponsivePixels.size7,
+        paddingVertical: ResponsivePixels.size10,
+        paddingHorizontal: ResponsivePixels.size15,
+        borderRadius: 6,
     },
-    projectListItemText: {
-        textAlign: 'center',
-        color: Colors.CharcoalGray,
-        fontSize: ResponsivePixels.size12,
-        backgroundColor: Colors.DefaultYellow,
-        fontWeight: '600',
-        position: 'absolute',
-        top: -12,
-        paddingVertical: ResponsivePixels.size2,
-        paddingHorizontal: ResponsivePixels.size7,
-        borderRadius: 4,
-        zIndex: 5,
-    }
 });
 
 export default HistoryList;
