@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
-import QrMenuList from '../QrMenuList/QrMenuList';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
+import HistoryList from './HistoryList';
+import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
 
-interface IDashboardProps { }
+interface IHistoryProps { }
 
-interface IDashboardState {
+interface IHistoryState {
     projectData: Array<any>;
 }
 
-const Dashboard = (props: IDashboardProps) => {
+const History = (props: IHistoryProps) => {
 
-    // const [state, setState] = useState<IDashboardState>({});
+    // const [state, setState] = useState<IHistoryState>({});
 
     return (
         <>
             <StatusBar backgroundColor={Colors.CharcoalGrayOpacity} networkActivityIndicatorVisible barStyle={'default'} />
             <CustomHeader
                 numberOfFlexColumns={2}
-                leftColumn={"Generate QR"}
+                leftColumn={"History"}
                 rightColumn={IMAGES.ic_Line_Menu}
                 rightColumnImageStyle={{
                     padding: 10,
@@ -28,11 +29,12 @@ const Dashboard = (props: IDashboardProps) => {
                     borderRadius: 6,
                 }}
             />
-            <QrMenuList />
+            <CustomTabBar />
+            <HistoryList />
         </>
     );
 };
 
 const styles = StyleSheet.create({});
 
-export default Dashboard;
+export default History;

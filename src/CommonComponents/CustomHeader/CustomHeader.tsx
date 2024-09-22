@@ -13,15 +13,17 @@ interface ICustomHeaderProps {
 }
 export const CustomHeader = (props: ICustomHeaderProps) => {
     const { numberOfFlexColumns, leftColumn, middleColumn, rightColumn, handleRightColumnClick, handleLeftColumnClick, rightColumnImageStyle } = props
-    let CustomImageStyle = {
-        height: 40,
-        width: 40,
-        ...rightColumnImageStyle,
-    };
+    // let CustomImageStyle = {
+    //     height: 40,
+    //     width: 40,
+    //     ...rightColumnImageStyle,
+    //     padding: 10,
+    // };
     return (
-        <View style={styles.headerView}>
+        <>
             {
-                numberOfFlexColumns === 3 && (<View>
+                numberOfFlexColumns === 3 &&
+                (<View style={styles.headerView}>
                     {
                         typeof (leftColumn) == "number" ?
                             (<TouchableOpacity onPress={() => handleLeftColumnClick ? handleLeftColumnClick() : null}>
@@ -42,51 +44,53 @@ export const CustomHeader = (props: ICustomHeaderProps) => {
                 </View>)
             }
             {
-                numberOfFlexColumns === 2 && (<View>
+                numberOfFlexColumns === 2 &&
+                (<View style={styles.headerView}>
                     {
                         typeof (leftColumn) === "number" ?
                             (<TouchableOpacity onPress={() => handleLeftColumnClick ? handleLeftColumnClick() : null}>
                                 <Image style={styles.imageView} source={leftColumn} />
                             </TouchableOpacity>)
                             :
-                            (<View>
+                            (<View style={{ flex: 1, alignItems: 'flex-start' }}>
                                 <Text style={styles.title}>{leftColumn}</Text>
                             </View>)
                     }
                     {
                         typeof (rightColumn) === "number" ?
-                            (<TouchableOpacity onPress={() => handleRightColumnClick ? handleRightColumnClick() : null}>
-                                <Image style={CustomImageStyle} source={rightColumn} />
+                            (<TouchableOpacity style={rightColumnImageStyle} onPress={() => handleRightColumnClick ? handleRightColumnClick() : null}>
+                                <Image style={styles.imageView} source={rightColumn} />
                             </TouchableOpacity>)
                             :
-                            (<View>
+                            (<View style={{ flex: 1, alignItems: 'flex-end' }}>
                                 <Text style={styles.title}>{rightColumn}</Text>
                             </View>)
                     }
                 </View>)
             }
-        </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create(({
     headerView: {
         paddingHorizontal: ResponsivePixels.size35,
-        paddingTop: 50,
+        paddingTop: 55,
+        paddingVertical: 5,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: Colors.DefaultRedColor,
+        backgroundColor: Colors.CharcoalGray,
         opacity: 0.84,
     },
     imageView: {
-        height: 40,
-        width: 40,
-        tintColor: Colors.DefaultWhite,
+        height: 30,
+        width: 30,
+        tintColor: Colors.DefaultYellow,
     },
     title: {
         fontSize: ResponsivePixels.size22,
-        color: Colors.DefaultWhite,
+        color: Colors.SoftSilver,
         fontWeight: 'bold'
     }
 }))

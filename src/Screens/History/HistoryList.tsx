@@ -4,16 +4,17 @@ import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { navigate } from '../../Navigators/Navigator';
 import { IMAGES } from '../../Assets/Images';
+import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
 
-interface IQrMenuListProps { }
+interface IHistoryListProps { }
 
-interface IQrMenuListState {
+interface IHistoryListState {
     qrMenuList: Array<any>;
 }
 
-const QrMenuList = (props: IQrMenuListProps) => {
+const HistoryList = (props: IHistoryListProps) => {
 
-    const [state, setState] = useState<IQrMenuListState>({
+    const [state, setState] = useState<IHistoryListState>({
         qrMenuList: [
             {
                 id: 1,
@@ -118,7 +119,8 @@ const QrMenuList = (props: IQrMenuListProps) => {
     return (
         <>
             {/* <StatusBar backgroundColor={'transparent'} networkActivityIndicatorVisible barStyle={'light-content'} /> */}
-            <View style={styles.wrapper}>
+            {/* <CustomTabBar /> */}
+            {/* <View style={styles.wrapper}>
                 <View style={styles.container}>
                     <FlatList
                         scrollEnabled
@@ -138,7 +140,7 @@ const QrMenuList = (props: IQrMenuListProps) => {
                         }}
                     />
                 </View>
-            </View>
+            </View> */}
         </>
     );
 };
@@ -182,4 +184,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default QrMenuList;
+export default HistoryList;

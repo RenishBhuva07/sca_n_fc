@@ -5,6 +5,7 @@ import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { Colors } from '../../Assets/Styles/Colors';
 import Dashboard from '../../Screens/Dashboard/Dashboard';
 import { IMAGES } from '../../Assets/Images';
+import History from '../../Screens/History/History';
 
 interface IBottomTabProps { }
 
@@ -136,7 +137,7 @@ const BottomTab = (props: IBottomTabProps) => {
                     ),
                     tabBarHideOnKeyboard: true,
                 }} />
-                <Tab.Screen name='History' component={Dashboard} options={{
+                <Tab.Screen name='History' component={History} options={{
                     ...tabScreenOptions,
                     tabBarIcon: ({ focused, color, size }) => {
                         return (
