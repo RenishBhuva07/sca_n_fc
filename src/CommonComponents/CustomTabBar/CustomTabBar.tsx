@@ -1,16 +1,28 @@
 import { StyleSheet, Text, View, } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
-import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
+import { Component } from 'react';
 
-interface ICustomTabBarProps { }
+interface ICustomTabBarProps {
+    leftTabTitle: string;
+    rightTabTitle: string;
+    leftTabScreen: () => Component<{}, {}, any>;
+    rightTabScreen: () => Component<{}, {}, any>;
+}
 
 interface ICustomTabBarState { }
 
 const CustomTabBar = (props: ICustomTabBarProps) => {
 
     const Tab = createMaterialTopTabNavigator();
+
+    const {
+        leftTabTitle,
+        rightTabTitle,
+        leftTabScreen,
+        rightTabScreen,
+    } = props;
 
     function ScanScreen() {
         return (
@@ -41,6 +53,9 @@ const CustomTabBar = (props: ICustomTabBarProps) => {
                         ...styles.tabBarStyle,
                     },
                     tabBarLabelStyle: { fontSize: 20 },
+                    tabBarContentContainerStyle: {
+                        // backgroundColor: Colors.CharcoalGray,
+                    }
                 })}
                 tabBarOptions={{
                     activeTintColor: Colors.DefaultYellow,
@@ -51,8 +66,9 @@ const CustomTabBar = (props: ICustomTabBarProps) => {
                 }}
                 initialRouteName="Scan"
                 tabBarPosition="top"
+                sceneContainerStyle={{ backgroundColor: Colors.CharcoalGray, opacity: 0.84 }}
             >
-                <Tab.Screen name="Scan" component={ScanScreen} options={{
+                <Tab.Screen name={leftTabTitle} component={leftTabScreen} options={{
                     ...tabScreenOptions,
                     tabBarShowLabel: true,
                     tabBarAndroidRipple: {
@@ -72,13 +88,13 @@ const CustomTabBar = (props: ICustomTabBarProps) => {
                                     color: focused ? Colors.DefaultWhite : Colors.SoftSilver,
                                     fontSize: ResponsivePixels.size20,
                                     fontWeight: "bold",
-                                }}>Scan</Text>
+                                }}>{leftTabTitle}</Text>
                             </View>
                         )
                     },
                     tabBarShowIcon: false,
                 }} />
-                <Tab.Screen name="Create" component={CreateScreen} options={{
+                <Tab.Screen name={rightTabTitle} component={rightTabScreen} options={{
                     ...tabScreenOptions,
                     tabBarShowLabel: true,
                     tabBarAndroidRipple: {
@@ -99,7 +115,7 @@ const CustomTabBar = (props: ICustomTabBarProps) => {
                                     color: focused ? Colors.DefaultWhite : Colors.SoftSilver,
                                     fontSize: ResponsivePixels.size20,
                                     fontWeight: "bold",
-                                }}>Create</Text>
+                                }}>{rightTabTitle}</Text>
                             </View>
                         )
                     },
@@ -127,12 +143,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tabBarStyle: {
-        borderRadius: 6,
         backgroundColor: Colors.CharcoalGray,
         position: 'absolute',
         right: 20,
         left: 20,
+        borderRadius: 6,
         borderWidth: 0, // Remove border
+        marginVertical: ResponsivePixels.size15,
     },
 });
 

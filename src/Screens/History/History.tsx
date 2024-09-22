@@ -3,18 +3,66 @@ import { StatusBar, StyleSheet } from 'react-native';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
-import HistoryList from './HistoryList';
 import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
+import HistoryList from './HistoryList';
 
 interface IHistoryProps { }
 
 interface IHistoryState {
-    projectData: Array<any>;
+    scanHistoryList: Array<any>;
+    createHistoryList: Array<any>;
 }
 
 const History = (props: IHistoryProps) => {
 
-    // const [state, setState] = useState<IHistoryState>({});
+    const [state, setState] = useState<IHistoryState>({
+        scanHistoryList: [
+            {
+                id: 1,
+                icon: IMAGES.ic_Scan_History,
+                title: "https://itunes.com",
+                subTitle: "Data",
+                created_date: "16 Dec 2024, 9:30 PM",
+            },
+            {
+                id: 1,
+                icon: IMAGES.ic_Scan_History,
+                title: "https://itunes.com",
+                subTitle: "Data",
+                created_date: "16 Dec 2024, 9:30 PM",
+            },
+            {
+                id: 1,
+                icon: IMAGES.ic_Scan_History,
+                title: "https://itunes.com",
+                subTitle: "Data",
+                created_date: "16 Dec 2024, 9:30 PM",
+            },
+        ],
+        createHistoryList: [
+            {
+                id: 1,
+                icon: IMAGES.ic_Scan_History,
+                title: "https://itunes.com",
+                subTitle: "Data",
+                created_date: "16 Dec 2024, 9:30 PM",
+            },
+            {
+                id: 1,
+                icon: IMAGES.ic_Scan_History,
+                title: "https://itunes.com",
+                subTitle: "Data",
+                created_date: "16 Dec 2024, 9:30 PM",
+            },
+            {
+                id: 1,
+                icon: IMAGES.ic_Scan_History,
+                title: "https://itunes.com",
+                subTitle: "Data",
+                created_date: "16 Dec 2024, 9:30 PM",
+            },
+        ]
+    });
 
     return (
         <>
@@ -29,8 +77,12 @@ const History = (props: IHistoryProps) => {
                     borderRadius: 6,
                 }}
             />
-            <CustomTabBar />
-            <HistoryList />
+            <CustomTabBar
+                leftTabTitle='Scan'
+                rightTabTitle='Create'
+                leftTabScreen={() => <HistoryList historyToRender={state.scanHistoryList} />}
+                rightTabScreen={() => <HistoryList historyToRender={state.createHistoryList} />}
+            />
         </>
     );
 };

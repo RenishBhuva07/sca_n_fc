@@ -124,7 +124,6 @@ const QrMenuList = (props: IQrMenuListProps) => {
                         scrollEnabled
                         data={state.qrMenuList}
                         renderItem={(item) => renderProjects(item)}
-                        keyExtractor={(item) => item.cca3}
                         contentContainerStyle={styles.projectList}
                         numColumns={3}
                         showsVerticalScrollIndicator={false}

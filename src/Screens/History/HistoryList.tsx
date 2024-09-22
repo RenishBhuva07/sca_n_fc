@@ -3,83 +3,19 @@ import { View, Text, StyleSheet, FlatList, Pressable, Image, } from 'react-nativ
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { navigate } from '../../Navigators/Navigator';
-import { IMAGES } from '../../Assets/Images';
-import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
 
-interface IHistoryListProps { }
-
-interface IHistoryListState {
-    qrMenuList: Array<any>;
+interface IHistoryListProps {
+    historyToRender: string;
 }
+
+interface IHistoryListState { }
 
 const HistoryList = (props: IHistoryListProps) => {
 
-    const [state, setState] = useState<IHistoryListState>({
-        qrMenuList: [
-            {
-                id: 1,
-                title: "Text",
-                icon: IMAGES.ic_Text,
-            },
-            {
-                id: 2,
-                title: "Website",
-                icon: IMAGES.ic_Website,
-            },
-            {
-                id: 3,
-                title: "Wi-Fi",
-                icon: IMAGES.ic_Wi_Fi,
-            },
-            {
-                id: 4,
-                title: "Event",
-                icon: IMAGES.ic_Event,
-            },
-            {
-                id: 5,
-                title: "Contact",
-                icon: IMAGES.ic_Contact,
-            },
-            {
-                id: 6,
-                title: "Business",
-                icon: IMAGES.ic_Business,
-            },
-            {
-                id: 7,
-                title: "Location",
-                icon: IMAGES.ic_Location,
-            },
-            {
-                id: 8,
-                title: "Whatsapp",
-                icon: IMAGES.ic_Whatsapp,
-            },
-            {
-                id: 9,
-                title: "Email",
-                icon: IMAGES.ic_Email,
-            },
-            {
-                id: 10,
-                title: "Twitter",
-                icon: IMAGES.ic_Twitter,
-            },
-            {
-                id: 11,
-                title: "Instagram",
-                icon: IMAGES.ic_Instagram,
-            },
-            {
-                id: 12,
-                title: "Telephone",
-                icon: IMAGES.ic_Telephone,
-            },
-        ],
-    });
+    // const [state, setState] = useState<IHistoryListState>({});
 
     const renderProjects = ({ item, index }: any) => {
+        console.error('renderProjects__', item);
         return (
             <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("Details", { name: item?.title })}>
                 <View style={{
@@ -104,52 +40,38 @@ const HistoryList = (props: IHistoryListProps) => {
             </Pressable>
         )
     };
-    const renderStickyHeaderComponent = () => {
-        return (
-            <View style={{
-                backgroundColor: 'red',
-            }}>
-                <Text style={{ backgroundColor: 'red', color: Colors.DefaultGreenColor }}>Hey</Text>
-            </View>
-        )
-    };
 
-
-
+    const {
+        historyToRender,
+    } = props;
+    console.log(historyToRender);
     return (
-        <>
-            {/* <StatusBar backgroundColor={'transparent'} networkActivityIndicatorVisible barStyle={'light-content'} /> */}
-            {/* <CustomTabBar /> */}
-            {/* <View style={styles.wrapper}>
+        <View style={{ marginTop: ResponsivePixels.size100 }}>
+            <View style={styles.wrapper}>
                 <View style={styles.container}>
                     <FlatList
                         scrollEnabled
-                        data={state.qrMenuList}
+                        data={historyToRender}
                         renderItem={(item) => renderProjects(item)}
-                        keyExtractor={(item) => item.cca3}
                         contentContainerStyle={styles.projectList}
                         numColumns={3}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
 
                         stickyHeaderHiddenOnScroll={true}
-                        // StickyHeaderComponent={() => renderStickyHeaderComponent()}
                         invertStickyHeaders={true}
                         style={{
                             // paddingVertical: 20,
                         }}
                     />
                 </View>
-            </View> */}
-        </>
+            </View>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1,
-        backgroundColor: Colors.CharcoalGray,
-        opacity: 0.84,
     },
     container: {
         borderTopRightRadius: 16,
