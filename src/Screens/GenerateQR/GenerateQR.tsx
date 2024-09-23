@@ -88,7 +88,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                     );
                 // Add more cases for other options like Event, Contact, etc.
                 default:
-                    return <Text>No form available for this option</Text>;
+                    return <Text style={{ color: Colors.DefaultWhite, textAlign: 'center' }}>No form available for this option</Text>;
             }
         };
 
