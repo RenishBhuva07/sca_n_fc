@@ -4,6 +4,7 @@ import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { navigate } from '../../Navigators/Navigator';
 import { IMAGES } from '../../Assets/Images';
+import { QR_TYPE } from '../../Utils/AppConstants';
 
 interface IQrMenuListProps { }
 
@@ -19,68 +20,80 @@ const QrMenuList = (props: IQrMenuListProps) => {
                 id: 1,
                 title: "Text",
                 icon: IMAGES.ic_Text,
+                qr_type: QR_TYPE.TEXT,
             },
             {
                 id: 2,
                 title: "Website",
                 icon: IMAGES.ic_Website,
+                qr_type: QR_TYPE.WEBSITE,
             },
             {
                 id: 3,
                 title: "Wi-Fi",
                 icon: IMAGES.ic_Wi_Fi,
+                qr_type: QR_TYPE.WI_FI,
             },
             {
                 id: 4,
                 title: "Event",
                 icon: IMAGES.ic_Event,
+                qr_type: QR_TYPE.EVENT,
             },
             {
                 id: 5,
                 title: "Contact",
                 icon: IMAGES.ic_Contact,
+                qr_type: QR_TYPE.CONTACT,
             },
             {
                 id: 6,
                 title: "Business",
                 icon: IMAGES.ic_Business,
+                qr_type: QR_TYPE.BUSINESS,
             },
             {
                 id: 7,
                 title: "Location",
                 icon: IMAGES.ic_Location,
+                qr_type: QR_TYPE.LOCATION,
             },
             {
                 id: 8,
                 title: "Whatsapp",
                 icon: IMAGES.ic_Whatsapp,
+                qr_type: QR_TYPE.WHATSAPP,
             },
             {
                 id: 9,
                 title: "Email",
                 icon: IMAGES.ic_Email,
+                qr_type: QR_TYPE.EMAIL,
             },
             {
                 id: 10,
                 title: "Twitter",
                 icon: IMAGES.ic_Twitter,
+                qr_type: QR_TYPE.TWITTER,
             },
             {
                 id: 11,
                 title: "Instagram",
                 icon: IMAGES.ic_Instagram,
+                qr_type: QR_TYPE.INSTAGRAM,
             },
             {
                 id: 12,
                 title: "Telephone",
                 icon: IMAGES.ic_Telephone,
+                qr_type: QR_TYPE.TELEPHONE,
             },
         ],
     });
 
     const renderProjects = ({ item, index }: any) => {
         return (
-            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("GenerateQR", { header_title: item?.title })}>
+            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("GenerateQR", { qr_menu_item: item })}>
                 <View style={{
                     height: 90,
                     width: 90,

@@ -27,6 +27,10 @@ const Dashboard = (props: IDashboardProps) => {
                     backgroundColor: Colors.CharcoalGray,
                     borderRadius: 6,
                 }}
+                imageStyles={{
+                    height: 30,
+                    width: 30,
+                }}
             />
             <QrMenuList />
         </>

@@ -131,6 +131,10 @@ const History = (props: IHistoryProps) => {
                     backgroundColor: Colors.CharcoalGray,
                     borderRadius: 6,
                 }}
+                imageStyles={{
+                    height: 30,
+                    width: 30,
+                }}
             />
             <CustomTabBar
                 leftTabTitle='Scan'
