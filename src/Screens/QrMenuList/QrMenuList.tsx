@@ -80,7 +80,7 @@ const QrMenuList = (props: IQrMenuListProps) => {
 
     const renderProjects = ({ item, index }: any) => {
         return (
-            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("Details", { name: item?.title })}>
+            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("GenerateQR", { header_title: item?.title })}>
                 <View style={{
                     height: 90,
                     width: 90,

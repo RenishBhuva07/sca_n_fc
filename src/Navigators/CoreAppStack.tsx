@@ -6,6 +6,7 @@ import Dashboard from '../Screens/Dashboard/Dashboard';
 import Intro from '../Screens/Intro/Intro';
 import BottomTab from '../CommonComponents/BottomTabBar/BottomTabBar';
 import History from '../Screens/History/History';
+import GenerateQR from '../Screens/GenerateQR/GenerateQR';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const CoreAppStack = () => {
       <Stack.Screen name={'BottomTab'} component={BottomTab} />
       <Stack.Screen name={'Dashboard'} component={Dashboard} />
       <Stack.Screen name={'History'} component={History} />
+      <Stack.Screen name={'GenerateQR'} component={GenerateQR} />
     </Stack.Navigator>
   );
 };

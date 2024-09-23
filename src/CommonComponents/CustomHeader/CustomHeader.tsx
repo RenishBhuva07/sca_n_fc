@@ -10,20 +10,16 @@ interface ICustomHeaderProps {
     handleLeftColumnClick?: () => any;
     middleColumn?: string;
     rightColumnImageStyle?: StyleProp<ImageStyle>;
+    customHeaderBackgroundColor?: string;
 }
 export const CustomHeader = (props: ICustomHeaderProps) => {
-    const { numberOfFlexColumns, leftColumn, middleColumn, rightColumn, handleRightColumnClick, handleLeftColumnClick, rightColumnImageStyle } = props
-    // let CustomImageStyle = {
-    //     height: 40,
-    //     width: 40,
-    //     ...rightColumnImageStyle,
-    //     padding: 10,
-    // };
+    const { numberOfFlexColumns, leftColumn, middleColumn, rightColumn, handleRightColumnClick, handleLeftColumnClick, rightColumnImageStyle, customHeaderBackgroundColor } = props
+
     return (
         <>
             {
                 numberOfFlexColumns === 3 &&
-                (<View style={styles.headerView}>
+                (<View style={{ ...styles.headerView, backgroundColor: customHeaderBackgroundColor ? customHeaderBackgroundColor : Colors.CharcoalGray, }}>
                     {
                         typeof (leftColumn) == "number" ?
                             (<TouchableOpacity onPress={() => handleLeftColumnClick ? handleLeftColumnClick() : null}>
@@ -45,7 +41,7 @@ export const CustomHeader = (props: ICustomHeaderProps) => {
             }
             {
                 numberOfFlexColumns === 2 &&
-                (<View style={styles.headerView}>
+                (<View style={{ ...styles.headerView, backgroundColor: customHeaderBackgroundColor ? customHeaderBackgroundColor : Colors.CharcoalGray, }}>
                     {
                         typeof (leftColumn) === "number" ?
                             (<TouchableOpacity onPress={() => handleLeftColumnClick ? handleLeftColumnClick() : null}>
@@ -80,7 +76,7 @@ const styles = StyleSheet.create(({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: Colors.CharcoalGray,
+        // backgroundColor: Colors.CharcoalGray,
         opacity: 0.84,
     },
     imageView: {
