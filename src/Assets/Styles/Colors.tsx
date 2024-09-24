@@ -18,5 +18,6 @@ export const Colors = {
     CharcoalGrayOpacity: "#525252",
     LightCharcoalGray: "#3E3E42",
     SoftSilver: "#D9D9D9",
+    SoftSilverWithOpacity: 'rgba(217, 217, 217, 0.34)',
     NeutralSilver: "#A4A4A4",
 };

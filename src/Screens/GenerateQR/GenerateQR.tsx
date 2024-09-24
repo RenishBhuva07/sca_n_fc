@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Image, ImageBackground, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Dimensions, Image, ImageBackground, Pressable, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
@@ -16,6 +16,7 @@ interface IGenerateQRState { }
 const GenerateQR = (props: IGenerateQRProps) => {
 
     const [state, setState] = useState<IGenerateQRState>({});
+    let screenHeight = Dimensions.get("window").height;
 
     // useEffect(() => {
     //     return () => {
@@ -36,7 +37,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 // value={input}
                                 // onChangeText={setInput}
                                 style={styles.textInput}
-                                placeholderTextColor={Colors.SoftSilver}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
@@ -48,11 +49,11 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <View>
                             <Text style={styles.miniTitle}>Website URL</Text>
                             <TextInput
-                                placeholder="Enter URL"
+                                placeholder="www.qrcode.com"
                                 // value={input}
                                 // onChangeText={setInput}
                                 style={styles.textInput}
-                                placeholderTextColor={Colors.SoftSilver}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
@@ -64,29 +65,397 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <View>
                             <Text style={styles.miniTitle}>Network</Text>
                             <TextInput
-                                placeholder="Network"
+                                placeholder="Enter network name"
                                 // value={input}
                                 // onChangeText={setInput}
                                 style={styles.textInput}
-                                placeholderTextColor={Colors.SoftSilver}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
                             />
                             <Text style={styles.miniTitle}>Password</Text>
                             <TextInput
-                                placeholder="Password"
+                                placeholder="Enter password"
                                 // value={input}
                                 // onChangeText={setInput}
                                 style={styles.textInput}
-                                placeholderTextColor={Colors.SoftSilver}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
                             />
                         </View>
                     );
-                // Add more cases for other options like Event, Contact, etc.
+                case QR_TYPE.EVENT:
+                    return (
+                        <View>
+                            <Text style={styles.miniTitle}>Event Name</Text>
+                            <TextInput
+                                placeholder="Enter name"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Start Date and Time</Text>
+                            <TextInput
+                                placeholder="12 Dec 2022, 10:40 pm"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>End Date and Time</Text>
+                            <TextInput
+                                placeholder="12 Dec 2022, 10:40 pm"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Event Location</Text>
+                            <TextInput
+                                placeholder="Enter location"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Description</Text>
+                            <TextInput
+                                placeholder="Enter any details"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={{
+                                    ...styles.textInput, height: ResponsivePixels.size60
+                                }}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                                numberOfLines={2}
+                                multiline
+                                inputMode='text'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.CONTACT:
+                    return (
+                        <View>
+                            <Text style={styles.miniTitle}>First Name</Text>
+                            <TextInput
+                                placeholder="Enter name"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Last Name</Text>
+                            <TextInput
+                                placeholder="Enter name"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Company</Text>
+                            <TextInput
+                                placeholder="Enter company"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Job</Text>
+                            <TextInput
+                                placeholder="Enter job"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Phone</Text>
+                            <TextInput
+                                placeholder="Enter phone"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Email</Text>
+                            <TextInput
+                                placeholder="Enter email"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Website</Text>
+                            <TextInput
+                                placeholder="Enter website"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Address</Text>
+                            <TextInput
+                                placeholder="Enter address"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>City</Text>
+                            <TextInput
+                                placeholder="Enter city"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Country</Text>
+                            <TextInput
+                                placeholder="Enter country"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.BUSINESS:
+                    return (
+                        <View>
+                            <Text style={styles.miniTitle}>Company Name</Text>
+                            <TextInput
+                                placeholder="Enter name"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Industry</Text>
+                            <TextInput
+                                placeholder="e.g Food/Agency"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Phone</Text>
+                            <TextInput
+                                placeholder="Enter phone"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Email</Text>
+                            <TextInput
+                                placeholder="Enter email"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Website</Text>
+                            <TextInput
+                                placeholder="Enter website"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Address</Text>
+                            <TextInput
+                                placeholder="Enter address"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>City</Text>
+                            <TextInput
+                                placeholder="Enter city"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                            <Text style={styles.miniTitle}>Country</Text>
+                            <TextInput
+                                placeholder="Enter country"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.LOCATION:
+                    return (
+                        <View style={{}}>
+                            <Text style={styles.miniTitle}>Location</Text>
+                            <TextInput
+                                placeholder="Enter location"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.WHATSAPP:
+                    return (
+                        <View style={{}}>
+                            <Text style={styles.miniTitle}>WhatsApp Number</Text>
+                            <TextInput
+                                placeholder="Enter number"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.EMAIL:
+                    return (
+                        <View style={{}}>
+                            <Text style={styles.miniTitle}>Email</Text>
+                            <TextInput
+                                placeholder="Enter email address"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.TWITTER:
+                    return (
+                        <View style={{}}>
+                            <Text style={styles.miniTitle}>Username</Text>
+                            <TextInput
+                                placeholder="Enter twitter username"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.INSTAGRAM:
+                    return (
+                        <View style={{}}>
+                            <Text style={styles.miniTitle}>Username</Text>
+                            <TextInput
+                                placeholder="Enter Instagram username"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
+                case QR_TYPE.TELEPHONE:
+                    return (
+                        <View style={{}}>
+                            <Text style={styles.miniTitle}>Phone Number</Text>
+                            <TextInput
+                                placeholder="+92xxxxxxxxxx"
+                                // value={input}
+                                // onChangeText={setInput}
+                                style={styles.textInput}
+                                placeholderTextColor={Colors.SoftSilverWithOpacity}
+                                cursorColor={Colors.DefaultYellow}
+                                selectionColor={Colors.DefaultYellow}
+                                keyboardType='default'
+                            />
+                        </View>
+                    );
                 default:
                     return <Text style={{ color: Colors.DefaultWhite, textAlign: 'center' }}>No form available for this option</Text>;
             }
@@ -125,7 +494,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                     />
 
                     <View style={{ flex: 1, justifyContent: 'center' }}>
-                        <View style={styles.qrFormContainer}>
+                        <View style={{ ...styles.qrFormContainer, maxHeight: screenHeight - 150 }}>
                             <View style={{ alignItems: 'center' }}>
                                 <Image style={{
                                     width: ResponsivePixels.size70,
@@ -133,9 +502,12 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 }} source={IMAGES.ic_SplashLogo} />
                             </View>
 
-                            <View style={{ marginTop: ResponsivePixels.size40, marginBottom: ResponsivePixels.size60 }}>
+                            <ScrollView style={{
+                                marginTop: ResponsivePixels.size30,
+                                marginBottom: ResponsivePixels.size50
+                            }} showsVerticalScrollIndicator={false}>
                                 {renderGenerateQRForms()}
-                            </View>
+                            </ScrollView>
 
                             <View style={{}}>
                                 <Pressable style={styles.btnStyle} onPress={() => { }} >
@@ -166,6 +538,11 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.CharcoalGray,
         opacity: 0.78,
         borderRadius: 10,
+
+        borderTopWidth: 2,
+        borderBottomWidth: 2,
+        borderColor: Colors.DefaultYellow,
+        borderCurve: 'circular',
     },
     miniTitle: {
         fontSize: ResponsivePixels.size18,
@@ -180,7 +557,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: ResponsivePixels.size10,
         color: Colors.DefaultWhite,
         borderRadius: 6,
-        fontSize: ResponsivePixels.size16
+        fontSize: ResponsivePixels.size16,
     },
     btnStyle: {
         backgroundColor: Colors.DefaultYellow,
