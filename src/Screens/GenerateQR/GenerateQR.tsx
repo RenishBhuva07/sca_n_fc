@@ -41,6 +41,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -57,6 +58,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -73,6 +75,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Password</Text>
                             <TextInput
@@ -84,6 +87,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -100,6 +104,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Start Date and Time</Text>
                             <TextInput
@@ -111,6 +116,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>End Date and Time</Text>
                             <TextInput
@@ -122,6 +128,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Event Location</Text>
                             <TextInput
@@ -133,6 +140,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Description</Text>
                             <TextInput
@@ -149,6 +157,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 numberOfLines={2}
                                 multiline
                                 inputMode='text'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -165,6 +174,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Last Name</Text>
                             <TextInput
@@ -176,6 +186,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Company</Text>
                             <TextInput
@@ -187,6 +198,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Job</Text>
                             <TextInput
@@ -198,6 +210,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Phone</Text>
                             <TextInput
@@ -209,6 +222,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Email</Text>
                             <TextInput
@@ -220,6 +234,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Website</Text>
                             <TextInput
@@ -231,6 +246,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Address</Text>
                             <TextInput
@@ -242,6 +258,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>City</Text>
                             <TextInput
@@ -253,6 +270,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Country</Text>
                             <TextInput
@@ -264,6 +282,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -280,6 +299,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Industry</Text>
                             <TextInput
@@ -291,6 +311,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Phone</Text>
                             <TextInput
@@ -302,6 +323,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Email</Text>
                             <TextInput
@@ -313,6 +335,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Website</Text>
                             <TextInput
@@ -324,6 +347,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Address</Text>
                             <TextInput
@@ -335,6 +359,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>City</Text>
                             <TextInput
@@ -346,6 +371,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='next'
                             />
                             <Text style={styles.miniTitle}>Country</Text>
                             <TextInput
@@ -357,6 +383,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -373,6 +400,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -389,6 +417,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -405,6 +434,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -421,6 +451,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -437,6 +468,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -453,6 +485,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 cursorColor={Colors.DefaultYellow}
                                 selectionColor={Colors.DefaultYellow}
                                 keyboardType='default'
+                                returnKeyType='done'
                             />
                         </View>
                     );
@@ -539,10 +572,13 @@ const styles = StyleSheet.create({
         opacity: 0.78,
         borderRadius: 10,
 
-        borderTopWidth: 2,
-        borderBottomWidth: 2,
-        borderColor: Colors.DefaultYellow,
-        borderCurve: 'circular',
+        borderWidth: 0.2,
+        borderTopWidth: 3,
+        borderBottomWidth: 3,
+        borderTopColor: Colors.DefaultYellow,
+        borderBottomColor: Colors.DefaultYellow,
+        borderStartColor: Colors.CharcoalGray,
+        borderEndColor: Colors.CharcoalGray,
     },
     miniTitle: {
         fontSize: ResponsivePixels.size18,

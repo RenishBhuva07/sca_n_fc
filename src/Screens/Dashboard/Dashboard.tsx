@@ -17,7 +17,7 @@ const Dashboard = (props: IDashboardProps) => {
 
     return (
         <>
-            <StatusBar backgroundColor={Colors.CharcoalGrayOpacity} networkActivityIndicatorVisible barStyle={'default'} />
+            <StatusBar translucent backgroundColor={Colors.CharcoalGrayOpacity} networkActivityIndicatorVisible barStyle={'default'} />
             <CustomHeader
                 numberOfFlexColumns={2}
                 leftColumn={"Generate QR"}

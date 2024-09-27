@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, StatusBar, TouchableOpacity, Dimensions 
 import { IMAGES } from "../../Assets/Images";
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
-import { navigate } from '../../Navigators/Navigator';
+import { resetNavigation } from '../../Navigators/Navigator';
 const screenWidth = Dimensions.get("window").width;
 
 
@@ -14,7 +14,7 @@ interface IIntroProps {
 const Intro = (props: IIntroProps) => {
 
     const navigateToDashboard = () => {
-        navigate('BottomTab');
+        resetNavigation('BottomTab');
     };
 
     return (
