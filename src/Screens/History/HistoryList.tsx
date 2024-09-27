@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, Pressable, Image, } from 'react-nativ
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { IMAGES } from '../../Assets/Images';
+import { navigate } from '../../Navigators/Navigator';
 
 interface IHistoryListProps {
     historyToRender: string;
@@ -14,9 +15,9 @@ const HistoryList = (props: IHistoryListProps) => {
 
     // const [state, setState] = useState<IHistoryListState>({});
 
-    const renderHistory = ({ item, index }: any) => {
+    const renderHistoryItem = ({ item, index }: any) => {
         return (
-            <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { }}>
+            <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { navigate("Details") }}>
 
                 <View style={{ marginTop: ResponsivePixels.size7 }}>
                     <Image style={{ width: ResponsivePixels.size40, height: ResponsivePixels.size40, resizeMode: "contain" }} source={item?.icon} />
@@ -54,7 +55,7 @@ const HistoryList = (props: IHistoryListProps) => {
             <FlatList
                 scrollEnabled
                 data={historyToRender}
-                renderItem={(item) => renderHistory(item)}
+                renderItem={(item) => renderHistoryItem(item)}
                 contentContainerStyle={styles.historyListWrapper}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
@@ -71,14 +72,21 @@ const HistoryList = (props: IHistoryListProps) => {
 
 const styles = StyleSheet.create({
     shadowStyle: {
-        shadowColor: Colors.DefaultYellow,
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.82,
-        shadowRadius: 3.5,
-        elevation: 5,
+        // shadowColor: Colors.DefaultYellow,
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 10,
+        // },
+        // shadowOpacity: 0.82,
+        // shadowRadius: 3.5,
+        // elevation: 5,
+        // borderColor: Colors.DefaultYellow,
+        borderBottomWidth: 3,
+        borderWidth: 0.01,
+        borderTopColor: Colors.CharcoalGray,
+        borderStartColor: Colors.CharcoalGray,
+        borderEndColor: Colors.CharcoalGray,
+        borderBottomColor: Colors.DefaultYellow,
     },
     container: {
         marginTop: ResponsivePixels.size100

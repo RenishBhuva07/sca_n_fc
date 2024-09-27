@@ -5,6 +5,7 @@ import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
 import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
 import HistoryList from './HistoryList';
+import { navigateToSetting } from '../../Utils/Utils';
 
 interface IHistoryProps { }
 
@@ -135,6 +136,7 @@ const History = (props: IHistoryProps) => {
                     height: 30,
                     width: 30,
                 }}
+                handleRightColumnClick={navigateToSetting}
             />
             <CustomTabBar
                 leftTabTitle='Scan'

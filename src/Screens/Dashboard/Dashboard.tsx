@@ -4,6 +4,8 @@ import QrMenuList from '../QrMenuList/QrMenuList';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
+import { navigate } from '../../Navigators/Navigator';
+import { navigateToSetting } from '../../Utils/Utils';
 
 interface IDashboardProps { }
 
@@ -31,6 +33,7 @@ const Dashboard = (props: IDashboardProps) => {
                     height: 30,
                     width: 30,
                 }}
+                handleRightColumnClick={navigateToSetting}
             />
             <QrMenuList />
         </>

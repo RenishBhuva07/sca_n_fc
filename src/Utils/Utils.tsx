@@ -3,6 +3,7 @@ import { Colors } from "../Assets/Styles/Colors";
 import { FontName } from "../Assets/Styles/FontName";
 import ResponsivePixels from "../Assets/Styles/ResponsivePixels";
 import { Toast } from "native-base";
+import { navigate } from "../Navigators/Navigator";
 
 export const isIos = () => Platform.OS === "ios";
 
@@ -66,3 +67,5 @@ export const showDangerToast = (message: string, duration: number = 4000) => {
 export const showWarningToast = (message: string, duration: number = 4000) => {
     showToast(message, duration, "warning");
 };
+
+export const navigateToSetting = () => { navigate("Settings") };
