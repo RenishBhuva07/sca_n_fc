@@ -13,7 +13,7 @@ type TOAST_TYPES = "success" | "danger" | "warning" | "info";
 
 export const showToast = (
     message: string,
-    duration = 4000,
+    duration = 2000,
     type: TOAST_TYPES = "success"
 ) => {
     const styledata = isIos() ? { top: 15 } : { position: "absolute", bottom: 0 };
@@ -37,7 +37,9 @@ export const showToast = (
                     <View
                         style={{
                             backgroundColor: bgColor,
-                            width: Dimensions.get("window").width,
+                            width: Dimensions.get("window").width - ResponsivePixels.size50,
+                            borderRadius: 6,
+                            paddingHorizontal: ResponsivePixels.size15
                         }}
                     >
                         <Text
@@ -60,12 +62,14 @@ export const showToast = (
     }
 };
 
-export const showDangerToast = (message: string, duration: number = 4000) => {
+export const showDangerToast = (message: string, duration: number = 2000) => {
     showToast(message, duration, "danger");
 };
 
-export const showWarningToast = (message: string, duration: number = 4000) => {
+export const showWarningToast = (message: string, duration: number = 2000) => {
     showToast(message, duration, "warning");
 };
 
 export const navigateToSetting = () => { navigate("Settings") };
+
+export const isEmpty = (value: any) => !value || value.toString().trim().length <= 0;

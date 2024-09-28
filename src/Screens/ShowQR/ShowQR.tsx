@@ -24,17 +24,14 @@ interface IShowQRProps {
 
 interface IShowQRState {
     detailItemData: any;
-    isDownloading: boolean;
 }
 
 const ShowQR = (props: IShowQRProps) => {
 
-    const [state, setState] = useState<IShowQRState>({
-        detailItemData: {},
-        isDownloading: false,
-    }), [isDownloading, setIsDownloading] = useState(false),
+    const [state, setState] = useState<IShowQRState>({ detailItemData: {}, }),
+        [isDownloading, setIsDownloading] = useState(false),
         viewRef = useRef(),
-        handleDownLoadQR = () => {
+        handleDownLoadQR = (isShare: boolean) => {
             console.warn("");
             setTimeout(async () => {
                 setIsDownloading(true);
@@ -52,34 +49,35 @@ const ShowQR = (props: IShowQRProps) => {
                             url: urlString,
                             type: "image/jpeg",
                         };
-                        try {
-                            const image = await CameraRoll.save(uri, { type: "photo" });
-
-                            if (image) {
-                                Alert.alert(
-                                    "",
-                                    "Image saved successfully.",
-                                    [{ text: "OK", onPress: () => { } }],
-                                    { cancelable: false }
-                                );
+                        if (!isShare) {
+                            try {
+                                const image = await CameraRoll.save(uri, { type: "photo" });
+                                if (image) {
+                                    Alert.alert(
+                                        "",
+                                        "Image saved successfully.",
+                                        [{ text: "OK", onPress: () => { } }],
+                                        { cancelable: false }
+                                    );
+                                }
+                            } catch (error) {
+                                console.log("error", error);
                             }
-                        } catch (error) {
-                            console.log("error", error);
                         }
-                        // Share.open(options)
-                        //     .then(() => {
-                        //         setIsDownloading(false);
-                        //     })
-                        //     .catch(() => {
-                        //         setIsDownloading(false);
-                        //     });
+                        if (isShare) {
+                            Share.open(options).then(() => { }).catch(() => { });
+                        }
                     });
-                } catch (error) { }
+                } catch (error) {
+                    setIsDownloading(false);
+                }
+                setIsDownloading(false);
             }, 300);
         };
 
     useEffect(() => {
         const { detailItem } = props?.route?.params;
+        console.error("details__________", detailItem);
         setState((prevState) => ({ ...prevState, detailItemData: detailItem }));
         return () => {
         }
@@ -96,18 +94,18 @@ const ShowQR = (props: IShowQRProps) => {
             >
                 <CustomHeader
                     numberOfFlexColumns={2}
-                    leftColumn={IMAGES.ic_Back}
+                    leftColumn={!isDownloading ? IMAGES.ic_Back : 0}
                     rightColumn={"QR Code"}
-                    leftColumnImageStyle={{
+                    leftColumnImageStyle={[!isDownloading ? {
                         paddingVertical: ResponsivePixels.size7,
                         paddingHorizontal: ResponsivePixels.size10,
                         backgroundColor: Colors.CharcoalGray,
                         borderRadius: 6,
                         resizeMode: 'contain',
-                    }}
+                    } : {}]}
                     rightColumnImageStyle={{
-                        alignItems: 'flex-start',
-                        marginStart: ResponsivePixels.size25,
+                        alignItems: !isDownloading ? 'flex-start' : "center",
+                        marginStart: !isDownloading ? ResponsivePixels.size25 : 0,
                     }}
                     customHeaderBackgroundColor={"transparent"}
                     handleLeftColumnClick={() => goBack()}
@@ -170,11 +168,11 @@ const ShowQR = (props: IShowQRProps) => {
                         </View>
                     </View>
 
-                    <View style={{
+                    {!isDownloading && (<View style={{
                         flexDirection: "row",
                         justifyContent: "center",
                     }}>
-                        <Pressable onPress={() => { }} style={{ justifyContent: "center" }}>
+                        <Pressable onPress={() => handleDownLoadQR(true)} style={{ justifyContent: "center" }}>
                             <Image style={{
                                 width: ResponsivePixels.size80,
                                 height: ResponsivePixels.size80,
@@ -185,7 +183,7 @@ const ShowQR = (props: IShowQRProps) => {
                                 color: Colors.SoftSilver,
                             }}>Share</Text>
                         </Pressable>
-                        <Pressable onPress={() => handleDownLoadQR()}>
+                        <Pressable onPress={() => handleDownLoadQR(false)}>
                             <Image style={{
                                 width: ResponsivePixels.size80,
                                 height: ResponsivePixels.size80,
@@ -196,7 +194,7 @@ const ShowQR = (props: IShowQRProps) => {
                                 color: Colors.SoftSilver,
                             }}>Download</Text>
                         </Pressable>
-                    </View>
+                    </View>)}
 
                 </View>
 
