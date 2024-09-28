@@ -26,4 +26,10 @@ export const IMAGES = {
     bg_Background_Design: require("../Assets/Images/bg_Background_Design.png"),
     ic_Delete: require("../Assets/Images/ic_Delete.png"),
     ic_Back: require("../Assets/Images/ic_Back.png"),
+    ic_QR_History: require("../Assets/Images/ic_QR_History.png"),
+    ic_Vibrate: require("../Assets/Images/ic_Vibrate.png"),
+    ic_Beep: require("../Assets/Images/ic_Beep.png"),
+    ic_Share: require("../Assets/Images/ic_Share.png"),
+    ic_Privacy_Policy: require("../Assets/Images/ic_Privacy_Policy.png"),
+    ic_Rate_Us: require("../Assets/Images/ic_Rate_Us.png"),
 }
