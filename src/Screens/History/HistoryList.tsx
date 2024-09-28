@@ -17,7 +17,7 @@ const HistoryList = (props: IHistoryListProps) => {
 
     const renderHistoryItem = ({ item, index }: any) => {
         return (
-            <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { navigate("Details") }}>
+            <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { navigate("Details", { detailItem: item }) }}>
 
                 <View style={{ marginTop: ResponsivePixels.size7 }}>
                     <Image style={{ width: ResponsivePixels.size40, height: ResponsivePixels.size40, resizeMode: "contain" }} source={item?.icon} />

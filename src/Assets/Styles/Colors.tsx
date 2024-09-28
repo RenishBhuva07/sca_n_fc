@@ -20,4 +20,6 @@ export const Colors = {
     SoftSilver: "#D9D9D9",
     SoftSilverWithOpacity: 'rgba(217, 217, 217, 0.34)',
     NeutralSilver: "#A4A4A4",
+    SlateGray: "#858585",
+    Graphite: "#3C3C3C",
 };

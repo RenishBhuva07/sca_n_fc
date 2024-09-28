@@ -32,4 +32,6 @@ export const IMAGES = {
     ic_Share: require("../Assets/Images/ic_Share.png"),
     ic_Privacy_Policy: require("../Assets/Images/ic_Privacy_Policy.png"),
     ic_Rate_Us: require("../Assets/Images/ic_Rate_Us.png"),
+    ic_Share_Big: require("../Assets/Images/ic_Share_Big.png"),
+    ic_Copy: require("../Assets/Images/ic_Copy.png"),
 }
