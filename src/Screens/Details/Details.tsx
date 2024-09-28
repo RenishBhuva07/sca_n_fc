@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Image, ImageBackground, Pressable, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Alert, Clipboard, Image, ImageBackground, Pressable, Share, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
+import { showToast } from '../../Utils/Utils';
 
 interface IDetailsProps {
     detailItem: any;
+    route: any;
 }
 
 interface IDetailsState {
@@ -18,13 +20,19 @@ const Details = (props: IDetailsProps) => {
 
     const [state, setState] = useState<IDetailsState>({
         detailItemData: {},
-    });
+    }),
+        handleCopyLink = () => {
+            Clipboard.setString(state.detailItemData?.title);
+            showToast("Link copied to clipboard");
+        },
+        handleShareLink = () => {
+            Share.share({ message: state.detailItemData?.title })
+        };
 
     useEffect(() => {
         const { detailItem } = props?.route?.params;
         setState({ detailItemData: detailItem });
-        return () => {
-        }
+        return () => { }
     }, [])
 
 
@@ -97,7 +105,7 @@ const Details = (props: IDetailsProps) => {
                                 marginTop: ResponsivePixels.size10,
                                 fontSize: ResponsivePixels.size17
                             }}>{state.detailItemData?.title}</Text>
-                            <Pressable onPress={() => navigate("ShowQR")}>
+                            <Pressable onPress={() => navigate("ShowQR", { detailItem: state.detailItemData })}>
                                 <Text style={{
                                     color: Colors.DefaultYellow,
                                     textAlign: 'center',
@@ -112,7 +120,7 @@ const Details = (props: IDetailsProps) => {
                         flexDirection: "row",
                         justifyContent: "center",
                     }}>
-                        <Pressable onPress={() => { }} style={{ justifyContent: "center" }}>
+                        <Pressable onPress={() => handleShareLink()} style={{ justifyContent: "center" }}>
                             <Image style={{
                                 width: ResponsivePixels.size80,
                                 height: ResponsivePixels.size80,
@@ -123,7 +131,7 @@ const Details = (props: IDetailsProps) => {
                                 color: Colors.SoftSilver,
                             }}>Share</Text>
                         </Pressable>
-                        <Pressable onPress={() => { }}>
+                        <Pressable onPress={() => handleCopyLink()}>
                             <Image style={{
                                 width: ResponsivePixels.size80,
                                 height: ResponsivePixels.size80,

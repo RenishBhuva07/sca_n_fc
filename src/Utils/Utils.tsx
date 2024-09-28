@@ -48,7 +48,7 @@ export const showToast = (
                                 color: Colors.DefaultWhite,
                             }}
                         >
-                            {strings[message] || message}
+                            {message}
                         </Text>
                     </View>
                 );

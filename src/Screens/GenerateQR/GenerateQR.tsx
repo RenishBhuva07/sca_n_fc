@@ -9,6 +9,7 @@ import { QR_TYPE } from '../../Utils/AppConstants';
 
 interface IGenerateQRProps {
     qr_menu_item: any;
+    route: any;
 }
 
 interface IGenerateQRState { }

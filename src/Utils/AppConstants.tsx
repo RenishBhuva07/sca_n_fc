@@ -12,3 +12,5 @@ export namespace QR_TYPE {
   export const INSTAGRAM = 11;
   export const TELEPHONE = 12;
 };
+
+export const ANDROID_OS_VERSION = 13;
