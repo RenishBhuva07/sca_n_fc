@@ -37,7 +37,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
         [email, setEmail] = useState(""),
         [address, setAddress] = useState(""),
         [city, setCity] = useState(""),
-        [country, setCountry] = (""),
+        [country, setCountry] = useState(""),
         [industry, setIndustry] = useState(""),
         [userName, setUserName] = useState("");
 
@@ -358,8 +358,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Event Name</Text>
                         <TextInput
                             placeholder="Enter name"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={eventName}
+                            onChangeText={(evName) => setEventName(evName)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -371,8 +371,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Start Date and Time</Text>
                         <TextInput
                             placeholder="12 Dec 2022, 10:40 pm"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={startDate}
+                            onChangeText={(strtDte) => setStartDate(strtDte)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -384,8 +384,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>End Date and Time</Text>
                         <TextInput
                             placeholder="12 Dec 2022, 10:40 pm"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={endDate}
+                            onChangeText={(endDte) => setEndDate(endDte)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -397,8 +397,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Event Location</Text>
                         <TextInput
                             placeholder="Enter location"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={location}
+                            onChangeText={(lction) => setLocation(lction)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -410,8 +410,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Description</Text>
                         <TextInput
                             placeholder="Enter any details"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={description}
+                            onChangeText={(dscrption) => setDescription(dscrption)}
                             style={{
                                 ...styles.textInput, height: ResponsivePixels.size60
                             }}
@@ -433,8 +433,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>First Name</Text>
                         <TextInput
                             placeholder="Enter name"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={firstName}
+                            onChangeText={(frstNme) => setFirstName(frstNme)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -446,8 +446,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Last Name</Text>
                         <TextInput
                             placeholder="Enter name"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={lastName}
+                            onChangeText={(lstNme) => setLastName(lstNme)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -459,8 +459,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Company</Text>
                         <TextInput
                             placeholder="Enter company"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={company}
+                            onChangeText={(cmpny) => setCompany(cmpny)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -472,8 +472,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Job</Text>
                         <TextInput
                             placeholder="Enter job"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={jobTitle}
+                            onChangeText={(job) => setJobTitle(job)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -485,8 +485,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Phone</Text>
                         <TextInput
                             placeholder="Enter phone"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={phoneNumber}
+                            onChangeText={(phnNo) => setPhoneNumber(phnNo)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -498,8 +498,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Email</Text>
                         <TextInput
                             placeholder="Enter email"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={email}
+                            onChangeText={(emil) => setEmail(emil)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -511,8 +511,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Website</Text>
                         <TextInput
                             placeholder="Enter website"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={websitee}
+                            onChangeText={(wbSite) => setWebsitee(wbSite)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -524,8 +524,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Address</Text>
                         <TextInput
                             placeholder="Enter address"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={address}
+                            onChangeText={(adrss) => setAddress(adrss)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -537,8 +537,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>City</Text>
                         <TextInput
                             placeholder="Enter city"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={city}
+                            onChangeText={(cty) => setCity(cty)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -550,8 +550,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Country</Text>
                         <TextInput
                             placeholder="Enter country"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={country}
+                            onChangeText={(cntry) => setCountry(cntry)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -568,8 +568,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Company Name</Text>
                         <TextInput
                             placeholder="Enter name"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={company}
+                            onChangeText={(cmpny) => setCompany(cmpny)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -581,8 +581,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Industry</Text>
                         <TextInput
                             placeholder="e.g Food/Agency"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={industry}
+                            onChangeText={(indtry) => setIndustry(indtry)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -594,8 +594,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Phone</Text>
                         <TextInput
                             placeholder="Enter phone"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={phoneNumber}
+                            onChangeText={(phnNo) => setPhoneNumber(phnNo)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -607,8 +607,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Email</Text>
                         <TextInput
                             placeholder="Enter email"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={email}
+                            onChangeText={(emil) => setEmail(email)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -620,8 +620,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Website</Text>
                         <TextInput
                             placeholder="Enter website"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={websitee}
+                            onChangeText={(url) => setWebsitee(url)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -633,8 +633,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Address</Text>
                         <TextInput
                             placeholder="Enter address"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={address}
+                            onChangeText={(adrss) => setAddress(adrss)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -646,8 +646,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>City</Text>
                         <TextInput
                             placeholder="Enter city"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={city}
+                            onChangeText={(cty) => setCity(cty)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -659,8 +659,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Country</Text>
                         <TextInput
                             placeholder="Enter country"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={country}
+                            onChangeText={(cntry) => setCountry(cntry)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -677,8 +677,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Location</Text>
                         <TextInput
                             placeholder="Enter location"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={location}
+                            onChangeText={(lction) => setLocation(lction)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -695,8 +695,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>WhatsApp Number</Text>
                         <TextInput
                             placeholder="Enter number"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={phoneNumber}
+                            onChangeText={(phnNo) => setPhoneNumber(phnNo)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -713,8 +713,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Email</Text>
                         <TextInput
                             placeholder="Enter email address"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={email}
+                            onChangeText={(emil) => setEmail(emil)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -731,8 +731,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Username</Text>
                         <TextInput
                             placeholder="Enter twitter username"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={userName}
+                            onChangeText={(usrName) => setUserName(usrName)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -749,8 +749,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Username</Text>
                         <TextInput
                             placeholder="Enter Instagram username"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={userName}
+                            onChangeText={(usrName) => setUserName(usrName)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
@@ -767,8 +767,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         <Text style={styles.miniTitle}>Phone Number</Text>
                         <TextInput
                             placeholder="+92xxxxxxxxxx"
-                            // value={input}
-                            // onChangeText={setInput}
+                            value={phoneNumber}
+                            onChangeText={(phnNo) => setPhoneNumber(phnNo)}
                             style={styles.textInput}
                             placeholderTextColor={Colors.SoftSilverWithOpacity}
                             cursorColor={Colors.DefaultYellow}
