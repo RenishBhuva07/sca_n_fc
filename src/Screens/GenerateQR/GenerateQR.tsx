@@ -23,7 +23,23 @@ const GenerateQR = (props: IGenerateQRProps) => {
         [textt, setTextt] = useState(""),
         [websitee, setWebsitee] = useState(""),
         [network, setNetwork] = useState(""),
-        [password, setPassword] = useState("");
+        [password, setPassword] = useState(""),
+        [eventName, setEventName] = useState(""),
+        [startDate, setStartDate] = useState(""),
+        [endDate, setEndDate] = useState(""),
+        [location, setLocation] = useState(""),
+        [description, setDescription] = useState(""),
+        [firstName, setFirstName] = useState(""),
+        [lastName, setLastName] = useState(""),
+        [company, setCompany] = useState(""),
+        [jobTitle, setJobTitle] = useState(""),
+        [phoneNumber, setPhoneNumber] = useState(""),
+        [email, setEmail] = useState(""),
+        [address, setAddress] = useState(""),
+        [city, setCity] = useState(""),
+        [country, setCountry] = (""),
+        [industry, setIndustry] = useState(""),
+        [userName, setUserName] = useState("");
 
     let screenHeight = Dimensions.get("window").height;
 
@@ -117,15 +133,154 @@ const GenerateQR = (props: IGenerateQRProps) => {
                 });
             }
         },
-        handleEvent = () => { },
-        handleContact = () => { },
-        handleBusiness = () => { },
-        handleLocation = () => { },
-        handleWhatsapp = () => { },
-        handleEmail = () => { },
-        handleTwitter = () => { },
-        handleInstagram = () => { },
-        handleTelephone = () => { };
+        handleEvent = () => {
+            if (isEmpty(eventName)) {
+                showDangerToast("Please enter event name");
+            } else if (isEmpty(startDate)) {
+                showDangerToast("Please enter start date");
+            } else if (isEmpty(endDate)) {
+                showDangerToast("Please enter end date");
+            } else if (isEmpty(location)) {
+                showDangerToast("Please enter location");
+            } else if (isEmpty(description)) {
+                showDangerToast("Please enter description");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: eventName,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleContact = () => {
+            if (isEmpty(firstName)) {
+                showDangerToast("Please enter first name");
+            } else if (isEmpty(lastName)) {
+                showDangerToast("Please enter last name");
+            } else if (isEmpty(company)) {
+                showDangerToast("Please enter company name");
+            } else if (isEmpty(jobTitle)) {
+                showDangerToast("Please enter job title");
+            } else if (isEmpty(phoneNumber)) {
+                showDangerToast("Please enter phone number");
+            } else if (isEmpty(email)) {
+                showDangerToast("Please enter email");
+            } else if (isEmpty(websitee)) {
+                showDangerToast("Please enter website");
+            } else if (isEmpty(address)) {
+                showDangerToast("Please enter address");
+            } else if (isEmpty(city)) {
+                showDangerToast("Please enter city");
+            } else if (isEmpty(country)) {
+                showDangerToast("Please enter country");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: firstName + " " + lastName,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleBusiness = () => {
+            if (isEmpty(company)) {
+                showDangerToast("Please enter company name");
+            } else if (isEmpty(industry)) {
+                showDangerToast("Please enter industry");
+            } else if (isEmpty(phoneNumber)) {
+                showDangerToast("Please enter phone number");
+            } else if (isEmpty(email)) {
+                showDangerToast("Please enter email");
+            } else if (isEmpty(websitee)) {
+                showDangerToast("Please enter website");
+            } else if (isEmpty(address)) {
+                showDangerToast("Please enter address");
+            } else if (isEmpty(city)) {
+                showDangerToast("Please enter city");
+            } else if (isEmpty(country)) {
+                showDangerToast("Please enter country");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: company,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleLocation = () => {
+            if (isEmpty(location)) {
+                showDangerToast("Please enter location");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: location,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleWhatsapp = () => {
+            if (isEmpty(phoneNumber)) {
+                showDangerToast("Please enter phone number");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: "WhatsApp:" + phoneNumber,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleEmail = () => {
+            if (isEmpty(email)) {
+                showDangerToast("Please enter email");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: email,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleTwitter = () => {
+            if (isEmpty(userName)) {
+                showDangerToast("Please enter twitter username");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: "Twitter:" + userName,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleInstagram = () => {
+            if (isEmpty(userName)) {
+                showDangerToast("Please enter instagram username");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: "Instagram:" + userName,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        },
+        handleTelephone = () => {
+            if (isEmpty(phoneNumber)) {
+                showDangerToast("Please enter phone number");
+            } else {
+                navigate("ShowQR", {
+                    detailItem: {
+                        title: "Tel:" + phoneNumber,
+                        subTitle: state.qrMenuItem.title
+                    }
+                });
+            }
+        };
 
 
     const renderGenerateQRForms = () => {

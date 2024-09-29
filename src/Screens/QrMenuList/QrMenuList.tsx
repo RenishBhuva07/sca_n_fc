@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: ResponsivePixels.size7,
         borderRadius: 4,
         zIndex: 5,
+        opacity: 1,
     }
 });
 

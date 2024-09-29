@@ -22,4 +22,6 @@ export const Colors = {
     NeutralSilver: "#A4A4A4",
     SlateGray: "#858585",
     Graphite: "#3C3C3C",
+    GrayishSilver: "#E2E2E2",
+    PaleSilver: "#C3C7C7",
 };
