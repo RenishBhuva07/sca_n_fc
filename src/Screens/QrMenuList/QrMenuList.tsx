@@ -5,6 +5,7 @@ import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { navigate } from '../../Navigators/Navigator';
 import { IMAGES } from '../../Assets/Images';
 import { QR_TYPE } from '../../Utils/AppConstants';
+import * as Animatable from "react-native-animatable";
 
 interface IQrMenuListProps { }
 
@@ -93,27 +94,33 @@ const QrMenuList = (props: IQrMenuListProps) => {
 
     const renderProjects = ({ item, index }: any) => {
         return (
-            <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("GenerateQR", { qr_menu_item: item })}>
-                <View style={{
-                    height: 90,
-                    width: 90,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: Colors.CharcoalGray,
-                    borderRadius: 8,
-                    borderWidth: 2,
-                    borderColor: Colors.DefaultYellow,
-                    position: 'relative',
-                }}>
-                    <Text style={styles.projectListItemText}>{item?.title}</Text>
-                    <Image style={{
-                        width: 40,
-                        height: 40,
-                        tintColor: Colors.SoftSilver,
-                        resizeMode: 'contain',
-                    }} source={item?.icon} />
-                </View>
-            </Pressable>
+            <Animatable.View
+                animation={'bounceIn'}
+                duration={1000}
+                easing={'ease-in-out'}
+            >
+                <Pressable key={index + 1} style={styles.projectListItem} onPress={() => navigate("GenerateQR", { qr_menu_item: item })}>
+                    <View style={{
+                        height: 90,
+                        width: 90,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: Colors.CharcoalGray,
+                        borderRadius: 8,
+                        borderWidth: 2,
+                        borderColor: Colors.DefaultYellow,
+                        position: 'relative',
+                    }}>
+                        <Text style={styles.projectListItemText}>{item?.title}</Text>
+                        <Image style={{
+                            width: 40,
+                            height: 40,
+                            tintColor: Colors.SoftSilver,
+                            resizeMode: 'contain',
+                        }} source={item?.icon} />
+                    </View>
+                </Pressable>
+            </Animatable.View>
         )
     };
     const renderStickyHeaderComponent = () => {

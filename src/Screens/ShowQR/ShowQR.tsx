@@ -6,15 +6,12 @@ import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack } from '../../Navigators/Navigator';
 import QRCode from 'react-native-qrcode-svg';
-import PermissionUtils from '../../Utils/PermissionUtils';
-import { isIos } from '../../Utils/Utils';
-import { PERMISSIONS } from 'react-native-permissions';
 import { captureRef } from "react-native-view-shot";
 import Share from "react-native-share";
 import RNFS from "react-native-fs";
 import DeviceInfo from "react-native-device-info";
-import { ANDROID_OS_VERSION } from '../../Utils/AppConstants';
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
+import * as Animatable from "react-native-animatable";
 const osVersion = DeviceInfo.getSystemVersion();
 
 interface IShowQRProps {
@@ -77,7 +74,7 @@ const ShowQR = (props: IShowQRProps) => {
 
     useEffect(() => {
         const { detailItem } = props?.route?.params;
-        console.error("details__________", detailItem);
+        // console.error("details__________", detailItem);
         setState((prevState) => ({ ...prevState, detailItemData: detailItem }));
         return () => {
         }
@@ -116,7 +113,7 @@ const ShowQR = (props: IShowQRProps) => {
                 />
                 <View style={styles.container}>
 
-                    <View style={{
+                    <Animatable.View animation={'slideInLeft'} duration={500} easing={'ease-in-out'} style={{
                         backgroundColor: Colors.Graphite,
                         borderRadius: 6,
                         paddingHorizontal: ResponsivePixels.size20,
@@ -134,20 +131,22 @@ const ShowQR = (props: IShowQRProps) => {
                                 fontSize: ResponsivePixels.size14,
                             }}>{state.detailItemData?.title}</Text>
                         </View>
-                    </View>
+                    </Animatable.View>
 
                     <View style={{
                         flexDirection: "row",
                         justifyContent: "center",
                         marginBottom: ResponsivePixels.size35,
                     }}>
-                        <View style={{
-                            padding: 10,
-                            backgroundColor: Colors.Graphite,
-                            borderRadius: 6,
-                            elevation: 20,
-                            shadowColor: Colors.DefaultYellow,
-                        }}>
+                        <Animatable.View
+                            animation={'fadeInUp'} duration={500} easing={'ease-in-out'}
+                            style={{
+                                padding: 10,
+                                backgroundColor: Colors.Graphite,
+                                borderRadius: 6,
+                                elevation: 20,
+                                shadowColor: Colors.DefaultYellow,
+                            }}>
                             <QRCode
                                 value={state.detailItemData?.title}
                                 // enableLinearGradient
@@ -165,7 +164,7 @@ const ShowQR = (props: IShowQRProps) => {
                                 marginBottom: ResponsivePixels.size7,
                                 textAlign: 'center',
                             }}>SCAN  QR</Text>
-                        </View>
+                        </Animatable.View>
                     </View>
 
                     {!isDownloading && (<View style={{
@@ -173,26 +172,34 @@ const ShowQR = (props: IShowQRProps) => {
                         justifyContent: "center",
                     }}>
                         <Pressable onPress={() => handleDownLoadQR(true)} style={{ justifyContent: "center" }}>
-                            <Image style={{
-                                width: ResponsivePixels.size80,
-                                height: ResponsivePixels.size80,
-                            }} source={IMAGES.ic_Share_Big} />
-                            <Text style={{
-                                textAlign: 'center',
-                                fontSize: ResponsivePixels.size15,
-                                color: Colors.SoftSilver,
-                            }}>Share</Text>
+                            <Animatable.Image
+                                animation={'bounceIn'} duration={1000} easing={'ease-in-out'}
+                                style={{
+                                    width: ResponsivePixels.size80,
+                                    height: ResponsivePixels.size80,
+                                }} source={IMAGES.ic_Share_Big} />
+                            <Animatable.Text
+                                animation={'bounceIn'} duration={1000} easing={'ease-in-out'}
+                                style={{
+                                    textAlign: 'center',
+                                    fontSize: ResponsivePixels.size15,
+                                    color: Colors.SoftSilver,
+                                }}>Share</Animatable.Text>
                         </Pressable>
                         <Pressable onPress={() => handleDownLoadQR(false)}>
-                            <Image style={{
-                                width: ResponsivePixels.size80,
-                                height: ResponsivePixels.size80,
-                            }} source={IMAGES.ic_Copy} />
-                            <Text style={{
-                                textAlign: 'center',
-                                fontSize: ResponsivePixels.size15,
-                                color: Colors.SoftSilver,
-                            }}>Download</Text>
+                            <Animatable.Image
+                                animation={'bounceIn'} duration={1000} easing={'ease-in-out'}
+                                style={{
+                                    width: ResponsivePixels.size80,
+                                    height: ResponsivePixels.size80,
+                                }} source={IMAGES.ic_Copy} />
+                            <Animatable.Text
+                                animation={'bounceIn'} duration={1000} easing={'ease-in-out'}
+                                style={{
+                                    textAlign: 'center',
+                                    fontSize: ResponsivePixels.size15,
+                                    color: Colors.SoftSilver,
+                                }}>Download</Animatable.Text>
                         </Pressable>
                     </View>)}
 

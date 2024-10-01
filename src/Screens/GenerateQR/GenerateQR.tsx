@@ -7,6 +7,7 @@ import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
 import { QR_TYPE } from '../../Utils/AppConstants';
 import { isEmpty, showDangerToast } from '../../Utils/Utils';
+import * as Animatable from "react-native-animatable";
 
 interface IGenerateQRProps {
     qr_menu_item: any;
@@ -20,26 +21,26 @@ interface IGenerateQRState {
 const GenerateQR = (props: IGenerateQRProps) => {
 
     const [state, setState] = useState<IGenerateQRState>({ qrMenuItem: {}, }),
-        [textt, setTextt] = useState(""),
-        [websitee, setWebsitee] = useState(""),
-        [network, setNetwork] = useState(""),
-        [password, setPassword] = useState(""),
-        [eventName, setEventName] = useState(""),
-        [startDate, setStartDate] = useState(""),
-        [endDate, setEndDate] = useState(""),
-        [location, setLocation] = useState(""),
-        [description, setDescription] = useState(""),
-        [firstName, setFirstName] = useState(""),
-        [lastName, setLastName] = useState(""),
-        [company, setCompany] = useState(""),
-        [jobTitle, setJobTitle] = useState(""),
-        [phoneNumber, setPhoneNumber] = useState(""),
-        [email, setEmail] = useState(""),
-        [address, setAddress] = useState(""),
-        [city, setCity] = useState(""),
-        [country, setCountry] = useState(""),
-        [industry, setIndustry] = useState(""),
-        [userName, setUserName] = useState("");
+        [textt, setTextt] = useState<string>(""),
+        [websitee, setWebsitee] = useState<string>(""),
+        [network, setNetwork] = useState<string>(""),
+        [password, setPassword] = useState<string>(""),
+        [eventName, setEventName] = useState<string>(""),
+        [startDate, setStartDate] = useState<string>(""),
+        [endDate, setEndDate] = useState<string>(""),
+        [location, setLocation] = useState<string>(""),
+        [description, setDescription] = useState<string>(""),
+        [firstName, setFirstName] = useState<string>(""),
+        [lastName, setLastName] = useState<string>(""),
+        [company, setCompany] = useState<string>(""),
+        [jobTitle, setJobTitle] = useState<string>(""),
+        [phoneNumber, setPhoneNumber] = useState<string>(""),
+        [email, setEmail] = useState<string>(""),
+        [address, setAddress] = useState<string>(""),
+        [city, setCity] = useState<string>(""),
+        [country, setCountry] = useState<string>(""),
+        [industry, setIndustry] = useState<string>(""),
+        [userName, setUserName] = useState<string>("");
 
     let screenHeight = Dimensions.get("window").height;
 
@@ -288,7 +289,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.TEXT:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>Text</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Text</Animatable.Text>
                         <TextInput
                             placeholder="Enter text"
                             value={textt}
@@ -306,7 +307,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.WEBSITE:
                 return (
                     <View>
-                        <Text style={styles.miniTitle}>Website URL</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Website URL</Animatable.Text>
                         <TextInput
                             placeholder="www.qrcode.com"
                             value={websitee}
@@ -324,7 +325,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.WI_FI:
                 return (
                     <View>
-                        <Text style={styles.miniTitle}>Network</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Network</Animatable.Text>
                         <TextInput
                             placeholder="Enter network name"
                             value={network}
@@ -337,7 +338,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='username'
                         />
-                        <Text style={styles.miniTitle}>Password</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Password</Animatable.Text>
                         <TextInput
                             placeholder="Enter password"
                             value={password}
@@ -355,7 +356,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.EVENT:
                 return (
                     <View>
-                        <Text style={styles.miniTitle}>Event Name</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Event Name</Animatable.Text>
                         <TextInput
                             placeholder="Enter name"
                             value={eventName}
@@ -368,7 +369,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='name'
                         />
-                        <Text style={styles.miniTitle}>Start Date and Time</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Start Date and Time</Animatable.Text>
                         <TextInput
                             placeholder="12 Dec 2022, 10:40 pm"
                             value={startDate}
@@ -381,7 +382,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='none'
                         />
-                        <Text style={styles.miniTitle}>End Date and Time</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>End Date and Time</Animatable.Text>
                         <TextInput
                             placeholder="12 Dec 2022, 10:40 pm"
                             value={endDate}
@@ -394,7 +395,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='none'
                         />
-                        <Text style={styles.miniTitle}>Event Location</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Event Location</Animatable.Text>
                         <TextInput
                             placeholder="Enter location"
                             value={location}
@@ -407,7 +408,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='location'
                         />
-                        <Text style={styles.miniTitle}>Description</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Description</Animatable.Text>
                         <TextInput
                             placeholder="Enter any details"
                             value={description}
@@ -430,7 +431,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.CONTACT:
                 return (
                     <View>
-                        <Text style={styles.miniTitle}>First Name</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>First Name</Animatable.Text>
                         <TextInput
                             placeholder="Enter name"
                             value={firstName}
@@ -443,7 +444,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='name'
                         />
-                        <Text style={styles.miniTitle}>Last Name</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Last Name</Animatable.Text>
                         <TextInput
                             placeholder="Enter name"
                             value={lastName}
@@ -456,7 +457,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='middleName'
                         />
-                        <Text style={styles.miniTitle}>Company</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Company</Animatable.Text>
                         <TextInput
                             placeholder="Enter company"
                             value={company}
@@ -469,7 +470,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='organizationName'
                         />
-                        <Text style={styles.miniTitle}>Job</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Job</Animatable.Text>
                         <TextInput
                             placeholder="Enter job"
                             value={jobTitle}
@@ -482,7 +483,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='jobTitle'
                         />
-                        <Text style={styles.miniTitle}>Phone</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Phone</Animatable.Text>
                         <TextInput
                             placeholder="Enter phone"
                             value={phoneNumber}
@@ -495,7 +496,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='telephoneNumber'
                         />
-                        <Text style={styles.miniTitle}>Email</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Email</Animatable.Text>
                         <TextInput
                             placeholder="Enter email"
                             value={email}
@@ -508,7 +509,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='emailAddress'
                         />
-                        <Text style={styles.miniTitle}>Website</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Website</Animatable.Text>
                         <TextInput
                             placeholder="Enter website"
                             value={websitee}
@@ -521,7 +522,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='URL'
                         />
-                        <Text style={styles.miniTitle}>Address</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Address</Animatable.Text>
                         <TextInput
                             placeholder="Enter address"
                             value={address}
@@ -534,7 +535,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='addressCityAndState'
                         />
-                        <Text style={styles.miniTitle}>City</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>City</Animatable.Text>
                         <TextInput
                             placeholder="Enter city"
                             value={city}
@@ -547,7 +548,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='addressCity'
                         />
-                        <Text style={styles.miniTitle}>Country</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Country</Animatable.Text>
                         <TextInput
                             placeholder="Enter country"
                             value={country}
@@ -565,7 +566,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.BUSINESS:
                 return (
                     <View>
-                        <Text style={styles.miniTitle}>Company Name</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Company Name</Animatable.Text>
                         <TextInput
                             placeholder="Enter name"
                             value={company}
@@ -578,7 +579,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='organizationName'
                         />
-                        <Text style={styles.miniTitle}>Industry</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Industry</Animatable.Text>
                         <TextInput
                             placeholder="e.g Food/Agency"
                             value={industry}
@@ -591,7 +592,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='none'
                         />
-                        <Text style={styles.miniTitle}>Phone</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Phone</Animatable.Text>
                         <TextInput
                             placeholder="Enter phone"
                             value={phoneNumber}
@@ -604,7 +605,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='telephoneNumber'
                         />
-                        <Text style={styles.miniTitle}>Email</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Email</Animatable.Text>
                         <TextInput
                             placeholder="Enter email"
                             value={email}
@@ -617,7 +618,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='emailAddress'
                         />
-                        <Text style={styles.miniTitle}>Website</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Website</Animatable.Text>
                         <TextInput
                             placeholder="Enter website"
                             value={websitee}
@@ -630,7 +631,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='URL'
                         />
-                        <Text style={styles.miniTitle}>Address</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Address</Animatable.Text>
                         <TextInput
                             placeholder="Enter address"
                             value={address}
@@ -643,7 +644,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='addressCityAndState'
                         />
-                        <Text style={styles.miniTitle}>City</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>City</Animatable.Text>
                         <TextInput
                             placeholder="Enter city"
                             value={city}
@@ -656,7 +657,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                             returnKeyType='next'
                             textContentType='addressCity'
                         />
-                        <Text style={styles.miniTitle}>Country</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Country</Animatable.Text>
                         <TextInput
                             placeholder="Enter country"
                             value={country}
@@ -674,7 +675,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.LOCATION:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>Location</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Location</Animatable.Text>
                         <TextInput
                             placeholder="Enter location"
                             value={location}
@@ -692,7 +693,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.WHATSAPP:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>WhatsApp Number</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>WhatsApp Number</Animatable.Text>
                         <TextInput
                             placeholder="Enter number"
                             value={phoneNumber}
@@ -710,7 +711,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.EMAIL:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>Email</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Email</Animatable.Text>
                         <TextInput
                             placeholder="Enter email address"
                             value={email}
@@ -728,7 +729,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.TWITTER:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>Username</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Username</Animatable.Text>
                         <TextInput
                             placeholder="Enter twitter username"
                             value={userName}
@@ -746,7 +747,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.INSTAGRAM:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>Username</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Username</Animatable.Text>
                         <TextInput
                             placeholder="Enter Instagram username"
                             value={userName}
@@ -764,7 +765,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             case QR_TYPE.TELEPHONE:
                 return (
                     <View style={{}}>
-                        <Text style={styles.miniTitle}>Phone Number</Text>
+                        <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={styles.miniTitle}>Phone Number</Animatable.Text>
                         <TextInput
                             placeholder="+92xxxxxxxxxx"
                             value={phoneNumber}
@@ -780,7 +781,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                     </View>
                 );
             default:
-                return <Text style={{ color: Colors.DefaultWhite, textAlign: 'center' }}>No form available for this option</Text>;
+                return <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={{ color: Colors.DefaultWhite, textAlign: 'center' }}>No form available for this option</Animatable.Text>;
         }
     };
 
@@ -816,13 +817,22 @@ const GenerateQR = (props: IGenerateQRProps) => {
                         }}
                     />
 
-                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <Animatable.View
+                        animation={'fadeInUp'}
+                        duration={700}
+                        easing={'ease-in-out'}
+                        style={{ flex: 1, justifyContent: 'center' }}
+                    >
                         <View style={{ ...styles.qrFormContainer, maxHeight: screenHeight - 150 }}>
                             <View style={{ alignItems: 'center' }}>
-                                <Image style={{
-                                    width: ResponsivePixels.size70,
-                                    height: ResponsivePixels.size70,
-                                }} source={IMAGES.ic_SplashLogo} />
+                                <Animatable.Image
+                                    animation={'bounceIn'}
+                                    duration={1200}
+                                    easing={'ease-in-out'}
+                                    style={{
+                                        width: ResponsivePixels.size70,
+                                        height: ResponsivePixels.size70,
+                                    }} source={IMAGES.ic_SplashLogo} />
                             </View>
 
                             <ScrollView style={{
@@ -832,14 +842,18 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 {renderGenerateQRForms()}
                             </ScrollView>
 
-                            <View style={{}}>
+                            <Animatable.View
+                                animation={'bounceIn'}
+                                duration={1200}
+                                easing={'ease-in-out'}
+                            >
                                 <Pressable style={styles.btnStyle} onPress={() => generateQRCode()} >
                                     <Text style={styles.btnTextStyle}>Generate QR Code</Text>
                                 </Pressable>
-                            </View>
+                            </Animatable.View>
 
                         </View>
-                    </View>
+                    </Animatable.View>
 
                 </ImageBackground>
             </SafeAreaView>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, ImageBackground, StatusBar, StyleSheet, Switch, Text, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
@@ -6,14 +6,14 @@ import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack } from '../../Navigators/Navigator';
 import { FontName } from '../../Assets/Styles/FontName';
+import * as Animatable from "react-native-animatable";
 
 interface ISettingsProps { }
 
-interface ISettingsState {
-    projectData: Array<any>;
-}
-
 const Settings = (props: ISettingsProps) => {
+
+    const [isVibrateOnScan, setIsVibrateOnScan] = useState<boolean>(false),
+        [isBeepOnScan, setIsBeepOnScan] = useState<boolean>(false);
 
     return (
         <>
@@ -41,84 +41,92 @@ const Settings = (props: ISettingsProps) => {
                     }}
                 />
                 <View style={styles.sectionContainer}>
-                    <Text style={{
-                        color: Colors.DefaultYellow,
-                        marginVertical: ResponsivePixels.size30,
-                        fontSize: ResponsivePixels.size26,
-                    }}>Settings</Text>
+                    <Animatable.Text
+                        animation={'slideInLeft'}
+                        duration={800}
+                        easing={'ease-in-out'}
+                        style={{
+                            color: Colors.DefaultYellow,
+                            marginBottom: ResponsivePixels.size30,
+                            fontSize: ResponsivePixels.size26,
+                        }}>Settings</Animatable.Text>
 
-                    <View style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
+                    <Animatable.View animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
                         <View style={{}}>
-                            <Image style={styles.iconStyle} source={IMAGES.ic_Vibrate} />
+                            <Animatable.Image animation={'fadeInLeft'} duration={600} easing={'ease-in-out'} delay={600} style={styles.iconStyle} source={IMAGES.ic_Vibrate} />
                         </View>
                         <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Vibrate</Text>
-                            <Text style={styles.subTitleText}>Vibration when scan is done</Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Vibrate</Animatable.Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.subTitleText}>Vibration when scan is done</Animatable.Text>
                         </View>
-                        <View style={{}}>
+                        <Animatable.View animation={'fadeInRight'} duration={600} easing={'ease-in-out'} delay={600}>
                             <Switch
                                 trackColor={{ false: Colors.CharcoalGrayOpacity, true: 'rgba(253, 182, 35, 0.5)' }}
-                                thumbColor={true ? Colors.DefaultYellow : Colors.SoftSilver}
-                                value={true}
-                                // onValueChange={toggleSwitch}
+                                thumbColor={isVibrateOnScan ? Colors.DefaultYellow : Colors.SoftSilver}
+                                value={isVibrateOnScan}
+                                onValueChange={() => setIsVibrateOnScan(!isVibrateOnScan)}
                                 style={{}}
                             />
-                        </View>
-                    </View>
-                    <View style={styles.settingItemWrapper}>
+                        </Animatable.View>
+                    </Animatable.View>
+                    <Animatable.View animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={styles.settingItemWrapper}>
                         <View style={{}}>
-                            <Image style={styles.iconStyle} source={IMAGES.ic_Beep} />
+                            <Animatable.Image animation={'fadeInLeft'} duration={600} easing={'ease-in-out'} delay={600} style={styles.iconStyle} source={IMAGES.ic_Beep} />
                         </View>
                         <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Beep</Text>
-                            <Text style={styles.subTitleText}>Beep when scan is done</Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Beep</Animatable.Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.subTitleText}>Beep when scan is done</Animatable.Text>
                         </View>
-                        <View style={{}}>
+                        <Animatable.View animation={'fadeInRight'} duration={600} easing={'ease-in-out'} delay={600}>
                             <Switch
                                 trackColor={{ false: Colors.CharcoalGrayOpacity, true: 'rgba(253, 182, 35, 0.5)' }}
-                                thumbColor={false ? Colors.DefaultYellow : Colors.SoftSilver}
-                                value={false}
-                                // onValueChange={toggleSwitch}
+                                thumbColor={isBeepOnScan ? Colors.DefaultYellow : Colors.SoftSilver}
+                                value={isBeepOnScan}
+                                onValueChange={() => setIsBeepOnScan(!isBeepOnScan)}
                                 style={{}}
                             />
-                        </View>
-                    </View>
+                        </Animatable.View>
+                    </Animatable.View>
 
                 </View>
                 <View style={styles.sectionContainer}>
-                    <Text style={{
-                        color: Colors.DefaultYellow,
-                        marginVertical: ResponsivePixels.size30,
-                        fontSize: ResponsivePixels.size26,
-                    }}>Support</Text>
+                    <Animatable.Text
+                        animation={'slideInLeft'}
+                        duration={800}
+                        easing={'ease-in-out'}
+                        style={{
+                            color: Colors.DefaultYellow,
+                            marginVertical: ResponsivePixels.size30,
+                            fontSize: ResponsivePixels.size26,
+                        }}>Support</Animatable.Text>
 
-                    <View style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
+                    <Animatable.View animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
                         <View style={{}}>
-                            <Image style={styles.iconStyle} source={IMAGES.ic_Rate_Us} />
+                            <Animatable.Image animation={'fadeInLeft'} duration={600} easing={'ease-in-out'} delay={600} style={styles.iconStyle} source={IMAGES.ic_Rate_Us} />
                         </View>
                         <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Rate Us</Text>
-                            <Text style={styles.subTitleText}>Your best reward to us.</Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Rate Us</Animatable.Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.subTitleText}>Your best reward to us.</Animatable.Text>
                         </View>
-                    </View>
-                    <View style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
+                    </Animatable.View>
+                    <Animatable.View animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
                         <View style={{}}>
-                            <Image style={styles.iconStyle} source={IMAGES.ic_Privacy_Policy} />
+                            <Animatable.Image animation={'fadeInLeft'} duration={600} easing={'ease-in-out'} delay={600} style={styles.iconStyle} source={IMAGES.ic_Privacy_Policy} />
                         </View>
                         <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Privacy Policy</Text>
-                            <Text style={styles.subTitleText}>Follow our policies that benefits you.</Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Privacy Policy</Animatable.Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.subTitleText}>Follow our policies that benefits you.</Animatable.Text>
                         </View>
-                    </View>
-                    <View style={styles.settingItemWrapper}>
+                    </Animatable.View>
+                    <Animatable.View animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={styles.settingItemWrapper}>
                         <View style={{}}>
-                            <Image style={styles.iconStyle} source={IMAGES.ic_Share} />
+                            <Animatable.Image animation={'fadeInLeft'} duration={600} easing={'ease-in-out'} delay={600} style={styles.iconStyle} source={IMAGES.ic_Share} />
                         </View>
                         <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Share</Text>
-                            <Text style={styles.subTitleText}>Share app with others.</Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Share</Animatable.Text>
+                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.subTitleText}>Share app with others.</Animatable.Text>
                         </View>
-                    </View>
+                    </Animatable.View>
 
                 </View>
             </ImageBackground>
