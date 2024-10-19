@@ -115,7 +115,7 @@ const QrMenuList = (props: IQrMenuListProps) => {
                         <Image style={{
                             width: 40,
                             height: 40,
-                            tintColor: Colors.SoftSilver,
+                            // tintColor: Colors.SoftSilver,
                             resizeMode: 'contain',
                         }} source={item?.icon} />
                     </View>

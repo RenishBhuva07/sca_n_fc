@@ -40,7 +40,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
         [city, setCity] = useState<string>(""),
         [country, setCountry] = useState<string>(""),
         [industry, setIndustry] = useState<string>(""),
-        [userName, setUserName] = useState<string>("");
+        [userName, setUserName] = useState<string>(""),
+        [dynamicIcon, setDynamicIcon] = useState<string>("");
 
     let screenHeight = Dimensions.get("window").height;
 
@@ -49,9 +50,54 @@ const GenerateQR = (props: IGenerateQRProps) => {
     } = props?.route?.params;
 
     useEffect(() => {
-        console.warn("qr_menu_item_______", qr_menu_item);
+        // console.warn("qr_menu_item_______", qr_menu_item);
         setState({ qrMenuItem: qr_menu_item });
+        justifyIconDynamically(qr_menu_item.qr_type);
     }, []);
+
+    const justifyIconDynamically = (qr_typee: number) => {
+        switch (qr_typee) {
+            case QR_TYPE.TEXT:
+                setDynamicIcon(IMAGES.ic_Text_yl);
+                break;
+            case QR_TYPE.WEBSITE:
+                setDynamicIcon(IMAGES.ic_Website_yl);
+                break;
+            case QR_TYPE.WI_FI:
+                setDynamicIcon(IMAGES.ic_Wi_Fi_yl);
+                break;
+            case QR_TYPE.EVENT:
+                setDynamicIcon(IMAGES.ic_Event_yl);
+                break;
+            case QR_TYPE.CONTACT:
+                setDynamicIcon(IMAGES.ic_Contact_yl);
+                break;
+            case QR_TYPE.BUSINESS:
+                setDynamicIcon(IMAGES.ic_Business_yl);
+                break;
+            case QR_TYPE.LOCATION:
+                setDynamicIcon(IMAGES.ic_Location_yl);
+                break;
+            case QR_TYPE.WHATSAPP:
+                setDynamicIcon(IMAGES.ic_Whatsapp_yl);
+                break;
+            case QR_TYPE.EMAIL:
+                setDynamicIcon(IMAGES.ic_Email_yl);
+                break;
+            case QR_TYPE.TWITTER:
+                setDynamicIcon(IMAGES.ic_Twitter_yl);
+                break;
+            case QR_TYPE.INSTAGRAM:
+                setDynamicIcon(IMAGES.ic_Instagram_yl);
+                break;
+            case QR_TYPE.TELEPHONE:
+                setDynamicIcon(IMAGES.ic_Telephone_yl);
+                break;
+            default:
+                setDynamicIcon(IMAGES.ic_SplashLogo);
+                break;
+        }
+    };
 
     const generateQRCode = () => {
         switch (state.qrMenuItem.qr_type) {
@@ -228,7 +274,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else {
                 navigate("ShowQR", {
                     detailItem: {
-                        title: "WhatsApp:" + phoneNumber,
+                        title: `wa.me/91${phoneNumber}`,
                         subTitle: state.qrMenuItem.title
                     }
                 });
@@ -240,7 +286,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else {
                 navigate("ShowQR", {
                     detailItem: {
-                        title: email,
+                        title: `mailto:${email}`,
                         subTitle: state.qrMenuItem.title
                     }
                 });
@@ -252,7 +298,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else {
                 navigate("ShowQR", {
                     detailItem: {
-                        title: "Twitter:" + userName,
+                        title: `https://x.com/${userName}`,
                         subTitle: state.qrMenuItem.title
                     }
                 });
@@ -264,7 +310,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else {
                 navigate("ShowQR", {
                     detailItem: {
-                        title: "Instagram:" + userName,
+                        title: `https://www.instagram.com/${userName}`,
                         subTitle: state.qrMenuItem.title
                     }
                 });
@@ -276,7 +322,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else {
                 navigate("ShowQR", {
                     detailItem: {
-                        title: "Tel:" + phoneNumber,
+                        title: `Tel:91${phoneNumber}`,
                         subTitle: state.qrMenuItem.title
                     }
                 });
@@ -832,7 +878,8 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                     style={{
                                         width: ResponsivePixels.size70,
                                         height: ResponsivePixels.size70,
-                                    }} source={IMAGES.ic_SplashLogo} />
+                                        resizeMode: "contain",
+                                    }} source={dynamicIcon} />
                             </View>
 
                             <ScrollView style={{
