@@ -4,7 +4,7 @@ import { Colors } from '../../Assets/Styles/Colors';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
-import { goBack } from '../../Navigators/Navigator';
+import { goBack, resetNavigation } from '../../Navigators/Navigator';
 import QRCode from 'react-native-qrcode-svg';
 import { captureRef } from "react-native-view-shot";
 import Share from "react-native-share";
@@ -202,8 +202,23 @@ const ShowQR = (props: IShowQRProps) => {
                                 }}>Download</Animatable.Text>
                         </Pressable>
                     </View>)}
-
+                    {/* <Pressable onPress={() => handleDownLoadQR(false)} style={{
+                        backgroundColor: Colors.DefaultYellow,
+                        alignItems: 'center',
+                        borderRadius: 8,
+                    }}>
+                        <Animatable.Text
+                            animation={'bounceIn'} duration={1000} easing={'ease-in-out'}
+                            style={{
+                                fontSize: ResponsivePixels.size15,
+                                color: Colors.Graphite,
+                                fontWeight: "bold",
+                            }}>Download</Animatable.Text>
+                    </Pressable> */}
                 </View>
+                {!isDownloading && (<Pressable style={styles.btnStyle} onPress={() => resetNavigation("BottomTab")} >
+                    <Text style={styles.btnTextStyle}>Done</Text>
+                </Pressable>)}
 
             </ImageBackground>
         </>
@@ -217,6 +232,20 @@ const styles = StyleSheet.create({
     },
     container: {
         marginHorizontal: ResponsivePixels.size35,
+    },
+    btnStyle: {
+        backgroundColor: Colors.DefaultYellow,
+        padding: ResponsivePixels.size15,
+        borderRadius: 6,
+        marginTop: "auto",
+        marginBottom: ResponsivePixels.size30,
+        marginHorizontal: ResponsivePixels.size35,
+    },
+    btnTextStyle: {
+        textAlign: 'center',
+        color: Colors.CharcoalGray,
+        fontSize: ResponsivePixels.size16,
+        fontWeight: 'bold',
     },
 });
 

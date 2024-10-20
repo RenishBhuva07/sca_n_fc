@@ -4,59 +4,72 @@ import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { IMAGES } from '../../Assets/Images';
 import { navigate } from '../../Navigators/Navigator';
+import { formatDate } from '../../Utils/Utils';
 
 interface IHistoryListProps {
     historyToRender: string;
+    deleteHistoryItem: (item: any) => void;
 }
 
 interface IHistoryListState { }
 
 const HistoryList = (props: IHistoryListProps) => {
 
-    // const [state, setState] = useState<IHistoryListState>({});
-
-    const renderHistoryItem = ({ item, index }: any) => {
-        return (
-            <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { navigate("Details", { detailItem: item }) }}>
-
-                <View style={{ marginTop: ResponsivePixels.size7 }}>
-                    <Image style={{ width: ResponsivePixels.size40, height: ResponsivePixels.size40, resizeMode: "contain" }} source={item?.icon} />
-                </View>
-
-                <View style={{}}>
-                    <Text style={{
-                        color: Colors.DefaultWhite,
-                        marginBottom: ResponsivePixels.size8,
-                    }}>{item?.title}</Text>
-                    <Text style={{
-                        color: Colors.NeutralSilver
-                    }}>{item?.subTitle}</Text>
-                </View>
-
-                <View style={{ alignItems: 'flex-end' }}>
-                    <Image style={{
-                        width: ResponsivePixels.size16,
-                        height: ResponsivePixels.size20,
-                        resizeMode: 'contain',
-                        marginBottom: ResponsivePixels.size8,
-                    }} source={IMAGES.ic_Delete} />
-                    <Text style={{ color: Colors.NeutralSilver }}>{item?.created_date}</Text>
-                </View>
-            </Pressable>
-        )
-    };
-
     const {
         historyToRender,
-    } = props;
-    console.log(historyToRender);
+        deleteHistoryItem,
+    } = props,
+        historyLength = historyToRender && historyToRender.length,
+        renderHistoryItem = ({ item, index }: any) => {
+            return (
+                <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { navigate("Details", { detailItem: item }) }}>
+
+                    <View style={{ marginTop: ResponsivePixels.size7 }}>
+                        <Image style={{ width: ResponsivePixels.size40, height: ResponsivePixels.size40, resizeMode: "contain" }} source={IMAGES.ic_Scan_History} />
+                    </View>
+
+                    <View style={{
+                        flex: 1,
+                        flexDirection: "column",
+                        marginStart: ResponsivePixels.size10
+                    }}>
+                        <View style={{ flexDirection: "row", }}>
+                            <Text style={{
+                                flex: 1,
+                                color: Colors.DefaultWhite,
+                                marginBottom: ResponsivePixels.size8,
+                            }}>{item?.title}</Text>
+
+                            <Pressable onPress={() => deleteHistoryItem(item)}>
+                                <Image style={{
+                                    width: ResponsivePixels.size16,
+                                    height: ResponsivePixels.size20,
+                                    resizeMode: 'contain',
+                                    marginBottom: ResponsivePixels.size8,
+                                }} source={IMAGES.ic_Delete} />
+                            </Pressable>
+                        </View>
+
+                        <View style={{ flexDirection: "row" }}>
+                            <Text style={{
+                                flex: 1,
+                                color: Colors.NeutralSilver,
+                            }}>{item?.subTitle}</Text>
+                            <Text style={{ color: Colors.NeutralSilver }}>{formatDate(item?.created_date) || "N/A"}</Text>
+                        </View>
+
+                    </View>
+                </Pressable>
+            )
+        };
+
     return (
         <View style={styles.container}>
             <FlatList
                 scrollEnabled
                 data={historyToRender}
                 renderItem={(item) => renderHistoryItem(item)}
-                contentContainerStyle={styles.historyListWrapper}
+                contentContainerStyle={historyLength > 0 ? styles.historyListWrapper : styles.emptyHistoryListWrapper}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 stickyHeaderHiddenOnScroll={true}
@@ -64,6 +77,20 @@ const HistoryList = (props: IHistoryListProps) => {
                 numColumns={1}
                 style={{
                     // paddingVertical: 20,
+                }}
+                ListEmptyComponent={() => {
+                    return (
+                        <View style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flex: 1,
+                        }}>
+                            <Text style={{
+                                color: Colors.NeutralSilver,
+                                fontSize: ResponsivePixels.size16,
+                            }}>Your QR History will be here</Text>
+                        </View>
+                    )
                 }}
             />
         </View>
@@ -89,18 +116,27 @@ const styles = StyleSheet.create({
         borderBottomColor: Colors.DefaultYellow,
     },
     container: {
-        marginTop: ResponsivePixels.size100
+        flex: 1,
+        marginTop: ResponsivePixels.size100,
+    },
+    emptyHistoryListWrapper: {
+        paddingHorizontal: 20,
+        paddingBottom: 150,
+        width: "100%",
+        flex: 1,
     },
     historyListWrapper: {
-        flexDirection: "row",
+        flexDirection: "column",
         flexWrap: 'wrap',
         paddingHorizontal: 20,
         paddingBottom: 150,
+        width: "100%",
     },
     historyListItem: {
+        flex: 1,
         width: '100%',
         flexDirection: "row",
-        justifyContent: 'space-between',
+        // justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.CharcoalGray,
         opacity: 1,

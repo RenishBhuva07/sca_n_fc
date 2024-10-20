@@ -73,3 +73,26 @@ export const showWarningToast = (message: string, duration: number = 2000) => {
 export const navigateToSetting = () => { navigate("Settings") };
 
 export const isEmpty = (value: any) => !value || value.toString().trim().length <= 0;
+
+export const formatDate = (timestamp: any) => {
+    // Create a new Date object from the timestamp
+    const date = new Date(Number(timestamp));
+
+    // Check if the date is valid
+    if (isNaN(date.getTime())) {
+        console.error("Invalid timestamp:", timestamp);
+        return "N/A";
+    }
+    // Use Intl.DateTimeFormat to format the date and time
+    const options = {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    };
+
+    // Format the date and time using locale-specific formatting
+    return new Intl.DateTimeFormat('en-GB', options).format(date);
+};

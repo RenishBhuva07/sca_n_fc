@@ -8,10 +8,13 @@ import { goBack, navigate } from '../../Navigators/Navigator';
 import { QR_TYPE } from '../../Utils/AppConstants';
 import { isEmpty, showDangerToast } from '../../Utils/Utils';
 import * as Animatable from "react-native-animatable";
+import { setQRListInfo } from '../../Redux/Actions/Actions';
+import { connect } from 'react-redux';
 
 interface IGenerateQRProps {
     qr_menu_item: any;
     route: any;
+    qrHistoryProps: any;
 }
 
 interface IGenerateQRState {
@@ -41,7 +44,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
         [country, setCountry] = useState<string>(""),
         [industry, setIndustry] = useState<string>(""),
         [userName, setUserName] = useState<string>(""),
-        [dynamicIcon, setDynamicIcon] = useState<string>("");
+        [dynamicIcon, setDynamicIcon] = useState<string>(""),
+        [qrHistoryRedux, setQrHistoryRedux] = useState<any[]>([]),
+        [newQrHistory, setNewQrHistory] = useState<any>({});
 
     let screenHeight = Dimensions.get("window").height;
 
@@ -50,8 +55,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
     } = props?.route?.params;
 
     useEffect(() => {
-        // console.warn("qr_menu_item_______", qr_menu_item);
+        console.warn("qrHistoryProps_______", props.qrHistoryProps);
         setState({ qrMenuItem: qr_menu_item });
+        setQrHistoryRedux(props.qrHistoryProps);
         justifyIconDynamically(qr_menu_item.qr_type);
     }, []);
 
@@ -138,16 +144,17 @@ const GenerateQR = (props: IGenerateQRProps) => {
                 handleTelephone();
                 break;
         }
+
+        // const qrHistoryToSave = qrHistoryRedux && qrHistoryRedux.length > 0 ? [...qrHistoryRedux, { title: textt, subTitle: state.qrMenuItem.title, created_date: new Date().getTime() }] : [{ title: textt, subTitle: state.qrMenuItem.title, created_date: new Date().getTime() }];
+        // setQRListInfo(qrHistoryToSave);
     },
         handleText = () => {
             if (isEmpty(textt)) {
                 showDangerToast("Please enter text");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: textt,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: textt,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -158,11 +165,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else if (!urlPattern.test(websitee)) {
                 showDangerToast("Please enter valid url");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: websitee,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: websitee,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -172,11 +177,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else if (isEmpty(password)) {
                 showDangerToast("Please enter password");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: network,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: network,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -192,11 +195,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else if (isEmpty(description)) {
                 showDangerToast("Please enter description");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: eventName,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: eventName,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -222,11 +223,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else if (isEmpty(country)) {
                 showDangerToast("Please enter country");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: firstName + " " + lastName,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: firstName + " " + lastName,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -248,11 +247,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             } else if (isEmpty(country)) {
                 showDangerToast("Please enter country");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: company,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: company,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -260,11 +257,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             if (isEmpty(location)) {
                 showDangerToast("Please enter location");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: location,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: location,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -272,11 +267,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             if (isEmpty(phoneNumber)) {
                 showDangerToast("Please enter phone number");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: `wa.me/91${phoneNumber}`,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: `wa.me/91${phoneNumber}`,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -284,11 +277,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             if (isEmpty(email)) {
                 showDangerToast("Please enter email");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: `mailto:${email}`,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: `mailto:${email}`,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -296,11 +287,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             if (isEmpty(userName)) {
                 showDangerToast("Please enter twitter username");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: `https://x.com/${userName}`,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: `https://x.com/${userName}`,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -308,11 +297,9 @@ const GenerateQR = (props: IGenerateQRProps) => {
             if (isEmpty(userName)) {
                 showDangerToast("Please enter instagram username");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: `https://www.instagram.com/${userName}`,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: `https://www.instagram.com/${userName}`,
+                    subTitle: state.qrMenuItem.title
                 });
             }
         },
@@ -320,13 +307,19 @@ const GenerateQR = (props: IGenerateQRProps) => {
             if (isEmpty(phoneNumber)) {
                 showDangerToast("Please enter phone number");
             } else {
-                navigate("ShowQR", {
-                    detailItem: {
-                        title: `Tel:91${phoneNumber}`,
-                        subTitle: state.qrMenuItem.title
-                    }
+                setDataInReduxAndNavigate({
+                    title: `Tel:91${phoneNumber}`,
+                    subTitle: state.qrMenuItem.title
                 });
             }
+        },
+        setDataInReduxAndNavigate = (item: any) => {
+            const qrHistoryToSave = qrHistoryRedux && qrHistoryRedux.length > 0 ? [...qrHistoryRedux, { ...item, created_date: new Date().getTime() }] : [{ ...item, created_date: new Date().getTime() }];
+            setQRListInfo(qrHistoryToSave);
+
+            navigate("ShowQR", {
+                detailItem: item
+            });
         };
 
 
@@ -960,4 +953,10 @@ const styles = StyleSheet.create({
     },
 });
 
-export default GenerateQR;
+const mapStateToProps = (state: any) => ({
+    qrHistoryProps: state.qrData.qrHistoryList,
+});
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(GenerateQR);
+// export default GenerateQR;

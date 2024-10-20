@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { Colors } from '../../Assets/Styles/Colors';
@@ -6,8 +6,13 @@ import { IMAGES } from '../../Assets/Images';
 import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
 import HistoryList from './HistoryList';
 import { navigateToSetting } from '../../Utils/Utils';
+import { useNavigation } from '@react-navigation/native';
+import { connect } from 'react-redux';
+import { setQRListInfo } from '../../Redux/Actions/Actions';
 
-interface IHistoryProps { }
+interface IHistoryProps {
+    qrHistoryProps: any[];
+}
 
 interface IHistoryState {
     scanHistoryList: Array<any>;
@@ -15,6 +20,7 @@ interface IHistoryState {
 }
 
 const History = (props: IHistoryProps) => {
+    const navigation = useNavigation();
 
     const [state, setState] = useState<IHistoryState>({
         scanHistoryList: [
@@ -119,6 +125,20 @@ const History = (props: IHistoryProps) => {
         ]
     });
 
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            console.warn("date_______", new Date().getTime());
+        });
+
+        return unsubscribe;
+    }, []);
+
+    const handleDeleteHistoryItem = (itemToDelete: any) => {
+        console.error("deleteHistoryItem", itemToDelete);
+        const updatedScanHistoryList = props.qrHistoryProps.filter((item) => item.created_date !== itemToDelete.created_date);
+        setQRListInfo(updatedScanHistoryList);
+    };
+
     return (
         <>
             <StatusBar backgroundColor={Colors.CharcoalGrayOpacity} networkActivityIndicatorVisible barStyle={'default'} />
@@ -140,8 +160,15 @@ const History = (props: IHistoryProps) => {
             <CustomTabBar
                 leftTabTitle='Scan'
                 rightTabTitle='Create'
-                leftTabScreen={() => <HistoryList historyToRender={state.scanHistoryList} />}
-                rightTabScreen={() => <HistoryList historyToRender={state.createHistoryList} />}
+                leftTabScreen={() => <HistoryList
+                    historyToRender={props.qrHistoryProps}
+                    deleteHistoryItem={(item) => handleDeleteHistoryItem(item)}
+                />
+                }
+                rightTabScreen={() => <HistoryList
+                    historyToRender={props.qrHistoryProps}
+                />
+                }
             />
         </>
     );
@@ -149,4 +176,9 @@ const History = (props: IHistoryProps) => {
 
 const styles = StyleSheet.create({});
 
-export default History;
+const mapStateToProps = (state: any) => ({
+    qrHistoryProps: state.qrData.qrHistoryList,
+});
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(History);
