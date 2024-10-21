@@ -6,7 +6,7 @@ import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
 import { QR_TYPE } from '../../Utils/AppConstants';
-import { isEmpty, showDangerToast } from '../../Utils/Utils';
+import { isEmpty, showDangerToast, triggerVibration } from '../../Utils/Utils';
 import * as Animatable from "react-native-animatable";
 import { setQRListInfo } from '../../Redux/Actions/Actions';
 import { connect } from 'react-redux';
@@ -320,6 +320,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
             navigate("ShowQR", {
                 detailItem: item
             });
+            triggerVibration(100);
         };
 
 
@@ -938,6 +939,7 @@ const styles = StyleSheet.create({
         color: Colors.DefaultWhite,
         borderRadius: 6,
         fontSize: ResponsivePixels.size16,
+        backgroundColor: Colors.CharcoalGray,
     },
     btnStyle: {
         backgroundColor: Colors.DefaultYellow,

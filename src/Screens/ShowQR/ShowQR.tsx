@@ -163,6 +163,8 @@ const ShowQR = (props: IShowQRProps) => {
                                 marginTop: ResponsivePixels.size15,
                                 marginBottom: ResponsivePixels.size7,
                                 textAlign: 'center',
+                                fontWeight: 'bold',
+                                letterSpacing: 1,
                             }}>SCAN  QR</Text>
                         </Animatable.View>
                     </View>

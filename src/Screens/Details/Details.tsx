@@ -111,6 +111,8 @@ const Details = (props: IDetailsProps) => {
                                     textAlign: 'center',
                                     fontSize: ResponsivePixels.size15,
                                     paddingVertical: ResponsivePixels.size14,
+                                    fontWeight: 'bold',
+                                    letterSpacing: 0.5,
                                 }}>Show QR Code</Text>
                             </Pressable>
                         </View>

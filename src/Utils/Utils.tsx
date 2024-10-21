@@ -1,4 +1,4 @@
-import { Dimensions, Platform, Text, View } from "react-native";
+import { Dimensions, Platform, Text, Vibration, View } from "react-native";
 import { Colors } from "../Assets/Styles/Colors";
 import { FontName } from "../Assets/Styles/FontName";
 import ResponsivePixels from "../Assets/Styles/ResponsivePixels";
@@ -95,4 +95,8 @@ export const formatDate = (timestamp: any) => {
 
     // Format the date and time using locale-specific formatting
     return new Intl.DateTimeFormat('en-GB', options).format(date);
+};
+
+export const triggerVibration = (intesity: number) => {
+    Vibration.vibrate(intesity);
 };
