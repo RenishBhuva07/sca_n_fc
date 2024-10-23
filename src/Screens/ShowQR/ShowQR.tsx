@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Image, ImageBackground, Pressable, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
-import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, resetNavigation } from '../../Navigators/Navigator';
@@ -12,6 +11,7 @@ import RNFS from "react-native-fs";
 import DeviceInfo from "react-native-device-info";
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import * as Animatable from "react-native-animatable";
+import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 const osVersion = DeviceInfo.getSystemVersion();
 
 interface IShowQRProps {

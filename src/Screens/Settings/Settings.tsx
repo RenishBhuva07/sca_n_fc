@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Image, ImageBackground, StatusBar, StyleSheet, Switch, Text, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
-import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack } from '../../Navigators/Navigator';
 import { FontName } from '../../Assets/Styles/FontName';
 import * as Animatable from "react-native-animatable";
+import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 
 interface ISettingsProps { }
 

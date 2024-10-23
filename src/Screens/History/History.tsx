@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
-import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
 import CustomTabBar from '../../CommonComponents/CustomTabBar/CustomTabBar';
@@ -9,6 +8,7 @@ import { navigateToSetting } from '../../Utils/Utils';
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import { setQRListInfo } from '../../Redux/Actions/Actions';
+import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 
 interface IHistoryProps {
     qrHistoryProps: any[];

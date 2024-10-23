@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { View, SafeAreaView, StatusBar, ImageBackground } from "react-native";
 import RNKeyboardAvoidingView from "../RNKeyboardAvoidingView/RNKeyboardAvoidingView";
-import { CustomHeader } from "../CustomHeader/CustomHeader";
 import { isIos } from "../../Utils/Utils";
 import ResponsivePixels from "../../Assets/Styles/ResponsivePixels";
+import CustomHeader from "../CustomHeader/CustomHeader";
 
 export interface MainContainerProps {
   loading: boolean;

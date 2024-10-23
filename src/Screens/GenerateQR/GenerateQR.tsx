@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Button, Dimensions, Image, ImageBackground, Pressable, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
-import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
 import { QR_TYPE } from '../../Utils/AppConstants';
@@ -10,6 +9,7 @@ import { isEmpty, showDangerToast, triggerVibration } from '../../Utils/Utils';
 import * as Animatable from "react-native-animatable";
 import { setQRListInfo } from '../../Redux/Actions/Actions';
 import { connect } from 'react-redux';
+import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 
 interface IGenerateQRProps {
     qr_menu_item: any;

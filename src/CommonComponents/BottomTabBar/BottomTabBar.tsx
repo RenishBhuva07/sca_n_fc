@@ -6,14 +6,17 @@ import { Colors } from '../../Assets/Styles/Colors';
 import Dashboard from '../../Screens/Dashboard/Dashboard';
 import { IMAGES } from '../../Assets/Images';
 import History from '../../Screens/History/History';
+import { connect } from 'react-redux';
 
-interface IBottomTabProps { }
+interface IBottomTabProps {
+    isScanMode: boolean;
+}
 
 interface IBottomTabState { }
 
 const BottomTab = (props: IBottomTabProps) => {
 
-    const Tab = createBottomTabNavigator();
+    const Tab = createBottomTabNavigator(), { isScanMode } = props;
 
     const screenOptions = {
         tabBarStyle: {
@@ -54,7 +57,7 @@ const BottomTab = (props: IBottomTabProps) => {
                 }}
                 initialRouteName={'Dashboard'}
             >
-                <Tab.Screen name='Generate' component={Dashboard} options={{
+                <Tab.Screen name={isScanMode ? "Generate" : "Write"} component={Dashboard} options={{
                     ...tabScreenOptions,
                     tabBarIcon: ({ focused, color, size }) => {
                         return (
@@ -76,7 +79,7 @@ const BottomTab = (props: IBottomTabProps) => {
                                     paddingBottom: 7,
                                     width: 80,
                                     textAlign: 'center',
-                                }}>Generate</Text>
+                                }}>{isScanMode ? "Generate" : "Write"}</Text>
                             </View>
                         );
                     },
@@ -187,4 +190,10 @@ const styles = StyleSheet.create({
     },
 });
 
-export default BottomTab;
+// export default BottomTab;
+const mapStateToProps = (state: any) => ({
+    isScanMode: state.baseData?.isScanModeEnabled,
+});
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(BottomTab);

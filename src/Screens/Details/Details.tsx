@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Clipboard, Image, ImageBackground, Pressable, Share, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
-import { CustomHeader } from '../../CommonComponents/CustomHeader/CustomHeader';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
 import { showToast } from '../../Utils/Utils';
+import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 
 interface IDetailsProps {
     detailItem: any;
