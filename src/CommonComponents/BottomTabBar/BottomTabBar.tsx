@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useState } from 'react';
+import React from 'react';
 import { Animated, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { Colors } from '../../Assets/Styles/Colors';
@@ -7,6 +7,8 @@ import Dashboard from '../../Screens/Dashboard/Dashboard';
 import { IMAGES } from '../../Assets/Images';
 import History from '../../Screens/History/History';
 import { connect } from 'react-redux';
+import * as Animatable from "react-native-animatable";
+import { navigateToNfcTap } from '../../Utils/Utils';
 
 interface IBottomTabProps {
     isScanMode: boolean;
@@ -118,7 +120,7 @@ const BottomTab = (props: IBottomTabProps) => {
                                 alignItems: 'center',
                                 ...styles.shadowStyle,
                             }}
-                        // onPress={{}}
+                            onPress={isScanMode ? () => { } : navigateToNfcTap}
                         >
                             <View style={{
                                 width: ResponsivePixels.size70,
@@ -129,12 +131,12 @@ const BottomTab = (props: IBottomTabProps) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}>
-                                <Image style={{
+                                <Animatable.Image animation={'bounceIn'} duration={800} style={{
                                     marginTop: ResponsivePixels.size5,
                                     width: ResponsivePixels.size45,
                                     height: ResponsivePixels.size45,
                                     resizeMode: 'contain',
-                                }} source={IMAGES.ic_Scan_QR} />
+                                }} source={isScanMode ? IMAGES.ic_Scan_QR : IMAGES.ic_NFC_Tap} />
                             </View>
                         </TouchableOpacity>
                     ),
