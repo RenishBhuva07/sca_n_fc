@@ -15,7 +15,6 @@ import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 const osVersion = DeviceInfo.getSystemVersion();
 
 interface IShowQRProps {
-    detailItem: any;
     route: any;
 }
 

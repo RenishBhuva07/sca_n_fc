@@ -7,11 +7,15 @@ import { IMAGES } from '../../Assets/Images';
 import { QR_TYPE } from '../../Utils/AppConstants';
 import * as Animatable from "react-native-animatable";
 import { triggerVibration } from '../../Utils/Utils';
+import { connect } from 'react-redux';
 
-interface IQrMenuListProps { }
+interface IQrMenuListProps {
+    isScanMode: boolean;
+}
 
 interface IQrMenuListState {
     qrMenuList: Array<any>;
+    nfcMenuList: Array<any>;
 }
 
 const QrMenuList = (props: IQrMenuListProps) => {
@@ -91,6 +95,80 @@ const QrMenuList = (props: IQrMenuListProps) => {
                 qr_type: QR_TYPE.TELEPHONE,
             },
         ],
+        nfcMenuList: [
+            {
+                id: 1,
+                title: "Text",
+                icon: IMAGES.ic_Text_yl,
+                qr_type: QR_TYPE.TEXT,
+            },
+            {
+                id: 2,
+                title: "Website",
+                icon: IMAGES.ic_Website_yl,
+                qr_type: QR_TYPE.WEBSITE,
+            },
+            {
+                id: 3,
+                title: "Wi-Fi",
+                icon: IMAGES.ic_Wi_Fi_yl,
+                qr_type: QR_TYPE.WI_FI,
+            },
+            {
+                id: 4,
+                title: "Bluetooth",
+                icon: IMAGES.ic_Event_yl,
+                qr_type: QR_TYPE.EVENT,
+            },
+            {
+                id: 5,
+                title: "Contact",
+                icon: IMAGES.ic_Contact_yl,
+                qr_type: QR_TYPE.CONTACT,
+            },
+            {
+                id: 6,
+                title: "Business",
+                icon: IMAGES.ic_Business_yl,
+                qr_type: QR_TYPE.BUSINESS,
+            },
+            {
+                id: 7,
+                title: "Location",
+                icon: IMAGES.ic_Location_yl,
+                qr_type: QR_TYPE.LOCATION,
+            },
+            {
+                id: 8,
+                title: "Whatsapp",
+                icon: IMAGES.ic_Whatsapp_yl,
+                qr_type: QR_TYPE.WHATSAPP,
+            },
+            {
+                id: 9,
+                title: "Email",
+                icon: IMAGES.ic_Email_yl,
+                qr_type: QR_TYPE.EMAIL,
+            },
+            {
+                id: 10,
+                title: "Twitter",
+                icon: IMAGES.ic_Twitter_yl,
+                qr_type: QR_TYPE.TWITTER,
+            },
+            {
+                id: 11,
+                title: "Instagram",
+                icon: IMAGES.ic_Instagram_yl,
+                qr_type: QR_TYPE.INSTAGRAM,
+            },
+            {
+                id: 12,
+                title: "Telephone",
+                icon: IMAGES.ic_Telephone_yl,
+                qr_type: QR_TYPE.TELEPHONE,
+            },
+        ],
     }),
         onClickMenu = (menuItem: any) => {
             triggerVibration(100);
@@ -116,7 +194,12 @@ const QrMenuList = (props: IQrMenuListProps) => {
                         borderColor: Colors.DefaultYellow,
                         position: 'relative',
                     }}>
-                        <Text style={styles.projectListItemText}>{item?.title}</Text>
+                        <Animatable.Text
+                            animation={'zoomIn'}
+                            duration={300}
+                            delay={500}
+                            easing={'ease-in-out'}
+                            style={styles.projectListItemText}>{item?.title}</Animatable.Text>
                         <Image style={{
                             width: 40,
                             height: 40,
@@ -127,7 +210,9 @@ const QrMenuList = (props: IQrMenuListProps) => {
                 </Pressable>
             </Animatable.View>
         )
-    };
+    }, {
+        isScanMode,
+    } = props;
 
     return (
         <>
@@ -135,7 +220,7 @@ const QrMenuList = (props: IQrMenuListProps) => {
                 <View style={styles.container}>
                     <FlatList
                         scrollEnabled
-                        data={state.qrMenuList}
+                        data={isScanMode ? state.qrMenuList : state.nfcMenuList}
                         renderItem={(item) => renderMenus(item)}
                         contentContainerStyle={styles.projectList}
                         numColumns={3}
@@ -194,4 +279,9 @@ const styles = StyleSheet.create({
     }
 });
 
-export default QrMenuList;
+const mapStateToProps = (state: any) => ({
+    isScanMode: state.baseData?.isScanModeEnabled,
+});
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(QrMenuList);

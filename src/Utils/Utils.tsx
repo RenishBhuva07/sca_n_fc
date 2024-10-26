@@ -71,7 +71,7 @@ export const showWarningToast = (message: string, duration: number = 2000) => {
 };
 
 export const navigateToSetting = () => navigate("Settings");
-export const navigateToNfcTap = () => navigate("NfcTap");
+export const navigateToNfcTap = (navigationParams: any) => navigate("NfcTap", navigationParams);
 
 export const isEmpty = (value: any) => !value || value.toString().trim().length <= 0;
 

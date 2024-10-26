@@ -4,7 +4,7 @@ import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
-import { QR_TYPE } from '../../Utils/AppConstants';
+import { NFC_OPERATIONS, QR_TYPE } from '../../Utils/AppConstants';
 import { isEmpty, showDangerToast, triggerVibration } from '../../Utils/Utils';
 import * as Animatable from "react-native-animatable";
 import { setQRListInfo } from '../../Redux/Actions/Actions';
@@ -14,7 +14,9 @@ import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 interface IGenerateQRProps {
     qr_menu_item: any;
     route: any;
+
     qrHistoryProps: any;
+    isScanMode: boolean;
 }
 
 interface IGenerateQRState {
@@ -52,7 +54,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
 
     const {
         qr_menu_item,
-    } = props?.route?.params;
+    } = props?.route?.params, { isScanMode } = props;
 
     useEffect(() => {
         console.warn("qrHistoryProps_______", props.qrHistoryProps);
@@ -314,12 +316,12 @@ const GenerateQR = (props: IGenerateQRProps) => {
             }
         },
         setDataInReduxAndNavigate = (item: any) => {
-            const qrHistoryToSave = qrHistoryRedux && qrHistoryRedux.length > 0 ? [...qrHistoryRedux, { ...item, created_date: new Date().getTime() }] : [{ ...item, created_date: new Date().getTime() }];
+            const qrHistoryToSave = qrHistoryRedux && qrHistoryRedux.length > 0 ? [...qrHistoryRedux, { ...item, created_date: new Date().getTime() }] : [{ ...item, created_date: new Date().getTime() }],
+                navigationKey = isScanMode ? "ShowQR" : "NfcTap",
+                navigationParams = isScanMode ? { detailItem: item } : { detailItem: item, nfcOperation: NFC_OPERATIONS.WRITE };
             setQRListInfo(qrHistoryToSave);
 
-            navigate("ShowQR", {
-                detailItem: item
-            });
+            navigate(navigationKey, navigationParams);
             triggerVibration(100);
         };
 
@@ -889,7 +891,7 @@ const GenerateQR = (props: IGenerateQRProps) => {
                                 easing={'ease-in-out'}
                             >
                                 <Pressable style={styles.btnStyle} onPress={() => generateQRCode()} >
-                                    <Text style={styles.btnTextStyle}>Generate QR Code</Text>
+                                    <Text style={styles.btnTextStyle}>{isScanMode ? "Generate QR Code" : "Write On NFC"}</Text>
                                 </Pressable>
                             </Animatable.View>
 
@@ -957,6 +959,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state: any) => ({
     qrHistoryProps: state.qrData.qrHistoryList,
+    isScanMode: state.baseData?.isScanModeEnabled,
 });
 
 const mapDispatchToProps = {};

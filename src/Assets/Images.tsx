@@ -38,4 +38,5 @@ export const IMAGES = {
     ic_Copy: require("../Assets/Images/ic_Copy.png"),
 
     ic_NFC_Tap: require("../Assets/Images/ic_NFC_Tap.png"),
+    ic_Write_On_Nfc: require("../Assets/Images/ic_Write_On_Nfc.png"),
 }

@@ -12,5 +12,10 @@ export namespace QR_TYPE {
   export const INSTAGRAM = 11;
   export const TELEPHONE = 12;
 };
+export namespace NFC_OPERATIONS {
+  export const WRITE = 1;
+  export const READ = 2;
+  export const RESET = 3;
+};
 
 export const ANDROID_OS_VERSION = 13;
