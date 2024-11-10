@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, StatusBar, TouchableOpacity, Dimensions } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { StyleSheet, View, Text, Image, StatusBar, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { IMAGES } from "../../Assets/Images";
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
@@ -7,15 +7,36 @@ import { resetNavigation } from '../../Navigators/Navigator';
 const screenWidth = Dimensions.get("window").width;
 
 
-interface IIntroProps {
-    navigation: any;
-}
+interface IIntroProps { }
 
 const Intro = (props: IIntroProps) => {
 
-    const navigateToDashboard = () => {
-        resetNavigation('BottomTab');
-    };
+    const flatListRef = useRef<FlatList>(null),
+        [pageIndex, setPageIndex] = useState(0),
+
+        introductionData = [
+            {
+                key: '1',
+                title: 'Quick, Clear, and Connected',
+                description: 'Effortlessly connect to digital content in seconds. Just point, scan, and access information, menus, contacts, or web links with ease. Simplifying interactions, one scan at a time',
+                image: IMAGES.ic_Intro_QR,
+            },
+            {
+                key: '2',
+                title: 'Smart Touch, Instant Access',
+                description: 'Experience the future of information sharing with a simple tap. Use NFC to instantly read and write data, enabling seamless exchanges across devices. Secure, swift, and versatile, all with a touch',
+                image: IMAGES.ic_NFC_Tap,
+            },
+        ],
+
+        handleButtonPress = () => {
+            if (pageIndex === 0) {
+                flatListRef.current?.scrollToIndex({ index: 1, animated: true });
+                setPageIndex(1);
+            } else {
+                resetNavigation('BottomTab');
+            }
+        };
 
     return (
         <View style={styles.container}>
@@ -29,31 +50,43 @@ const Intro = (props: IIntroProps) => {
                 resizeMode: 'cover',
             }} source={IMAGES.bg_Intro_Top} />
 
-            <View style={styles.contentContainer}>
-                <View style={{ flex: 1.5 }}>
-                    <Image style={styles.introIcon} source={IMAGES.ic_Intro_QR} />
-                </View>
-
-                <View style={styles.content}>
-                    <Text style={styles.title}>Get Started</Text>
-                    <Text style={styles.description}>Go and enjoy our features for free and make your life easy with us.</Text>
-                </View>
-            </View>
+            <FlatList
+                ref={flatListRef}
+                data={introductionData}
+                horizontal
+                pagingEnabled
+                showsHorizontalScrollIndicator={false}
+                scrollEnabled
+                renderItem={({ item }) => (
+                    <View style={styles.pageContainer}>
+                        <View style={styles.contentContainer}>
+                            <View style={{ flex: 1.5, alignItems: 'center' }}>
+                                <Image style={styles.introIcon} source={item.image} />
+                            </View>
+                            <Text style={styles.title}>{item.title}</Text>
+                            <Text style={styles.description}>{item.description}</Text>
+                        </View>
+                    </View>
+                )}
+                keyExtractor={(item) => item.key}
+            />
 
             <View style={{
                 position: 'relative',
+                bottom: 0,
+                marginTop: "auto",
             }}>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => navigateToDashboard()}
+                    onPress={() => handleButtonPress()}
                     activeOpacity={0.7}>
                     <Image style={styles.buttonIcon} source={IMAGES.ic_Arrow} />
                 </TouchableOpacity>
                 <Image style={{
-                    height: ResponsivePixels.size160,
-                    width: screenWidth - ResponsivePixels.size40,
-                    marginLeft: ResponsivePixels.size45,
-                    marginBottom: -ResponsivePixels.size15,
+                    height: ResponsivePixels.size170,
+                    width: screenWidth,
+                    marginLeft: ResponsivePixels.size10,
+                    bottom: 0,
                     resizeMode: 'contain'
                 }} source={IMAGES.bg_Intro_End} />
             </View>
@@ -67,37 +100,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.DefaultYellow,
     },
-    waveTop: {
-        position: 'absolute',
-        top: 0,
-        width: '100%',
-    },
-    waveBottom: {
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-    },
     contentContainer: {
         flex: 1,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingHorizontal: ResponsivePixels.size20,
-    },
-    content: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: ResponsivePixels.size20,
+        paddingHorizontal: ResponsivePixels.size55,
     },
     title: {
-        fontSize: ResponsivePixels.size32,
+        fontSize: ResponsivePixels.size21,
         fontWeight: 'bold',
         color: Colors.CharcoalGray,
+        textAlign: "justify",
     },
     description: {
         fontSize: ResponsivePixels.size16,
         color: Colors.LightCharcoalGray,
-        textAlign: 'center',
+        textAlign: 'justify',
         marginTop: ResponsivePixels.size10,
         marginBottom: ResponsivePixels.size30,
     },
@@ -123,6 +140,10 @@ const styles = StyleSheet.create({
     introIcon: {
         height: ResponsivePixels.size200,
         width: ResponsivePixels.size200,
+    },
+    pageContainer: {
+        width: screenWidth,
+        alignItems: 'center',
     },
 });
 

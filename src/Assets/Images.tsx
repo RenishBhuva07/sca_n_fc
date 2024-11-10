@@ -1,10 +1,12 @@
 export const IMAGES = {
-    ic_SplashLogo: require("../Assets/Images/splash_logo.png"),
-    ic_BackBlackIcon: require("../Assets/Images/splash_logo.png"),
-    ic_MainImg: require("../Assets/Images/splash_logo.png"),
-    bg_Intro_Top: require("../Assets/Images/intro_top.png"),
-    bg_Intro_End: require("../Assets/Images/intro_end.png"),
-    ic_Intro_QR: require("../Assets/Images/ic_Intro_QR.png"),
+    // Splash_Anim: require("../Assets/GIFs/Splash_Anim.gif"),
+
+    ic_SplashLogo: require("../Assets/Images/Splash_Logo.png"),
+    ic_BackBlackIcon: require("../Assets/Images/Splash_Logo.png"),
+    ic_MainImg: require("../Assets/Images/Splash_Logo.png"),
+    bg_Intro_Top: require("../Assets/Images/Intro_Top.png"),
+    bg_Intro_End: require("../Assets/Images/Intro_End.png"),
+    ic_Intro_QR: require("../Assets/Images/Splash_Logo.png"),
 
     ic_Generate_QR: require("../Assets/Images/ic_Generate_QR.png"),
     ic_Scan_QR: require("../Assets/Images/ic_Scan_QR.png"),

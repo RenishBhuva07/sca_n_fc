@@ -14,7 +14,7 @@ const Splash = (props: ISplashProps) => {
 
     useEffect(() => {
         setTimeout(() => {
-            props.navigation.navigate('Intro')
+            props.navigation.navigate('Intro');
         }, 2000);
     }, [])
 
