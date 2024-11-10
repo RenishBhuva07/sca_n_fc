@@ -5,10 +5,13 @@ import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { IMAGES } from '../../Assets/Images';
 import { navigate } from '../../Navigators/Navigator';
 import { formatDate } from '../../Utils/Utils';
+import { connect } from 'react-redux';
 
 interface IHistoryListProps {
     historyToRender: string;
     deleteHistoryItem: (item: any) => void;
+
+    isScanMode: boolean;
 }
 
 interface IHistoryListState { }
@@ -18,6 +21,8 @@ const HistoryList = (props: IHistoryListProps) => {
     const {
         historyToRender,
         deleteHistoryItem,
+
+        isScanMode,
     } = props,
         historyLength = historyToRender && historyToRender.length,
         renderHistoryItem = ({ item, index }: any) => {
@@ -88,7 +93,7 @@ const HistoryList = (props: IHistoryListProps) => {
                             <Text style={{
                                 color: Colors.NeutralSilver,
                                 fontSize: ResponsivePixels.size16,
-                            }}>Your QR History will be here</Text>
+                            }}>{isScanMode ? "Your QR History will be here" : "Your NFC History will be here"}</Text>
                         </View>
                     )
                 }}
@@ -147,4 +152,9 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HistoryList;
+const mapStateToProps = (state: any) => ({
+    isScanMode: state.baseData?.isScanModeEnabled,
+});
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryList);

@@ -4,6 +4,8 @@ import { IMAGES } from "../../Assets/Images";
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { resetNavigation } from '../../Navigators/Navigator';
+import { CustomAnimation } from '../../CommonComponents/CustomAnimation/CustomAnimation';
+import { ANIMATIONS } from '../../Assets/Animations';
 const screenWidth = Dimensions.get("window").width;
 
 
@@ -20,12 +22,14 @@ const Intro = (props: IIntroProps) => {
                 title: 'Quick, Clear, and Connected',
                 description: 'Effortlessly connect to digital content in seconds. Just point, scan, and access information, menus, contacts, or web links with ease. Simplifying interactions, one scan at a time',
                 image: IMAGES.ic_Intro_QR,
+                animation: ANIMATIONS.Scan,
             },
             {
                 key: '2',
                 title: 'Smart Touch, Instant Access',
                 description: 'Experience the future of information sharing with a simple tap. Use NFC to instantly read and write data, enabling seamless exchanges across devices. Secure, swift, and versatile, all with a touch',
                 image: IMAGES.ic_NFC_Tap,
+                animation: ANIMATIONS.Scan_NFC,
             },
         ],
 
@@ -60,8 +64,17 @@ const Intro = (props: IIntroProps) => {
                 renderItem={({ item }) => (
                     <View style={styles.pageContainer}>
                         <View style={styles.contentContainer}>
-                            <View style={{ flex: 1.5, alignItems: 'center' }}>
-                                <Image style={styles.introIcon} source={item.image} />
+                            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+
+                                {/* <Image style={styles.introIcon} source={item.image} /> */}
+                                <CustomAnimation
+                                    animationFile={item.animation}
+                                    animationStyle={{
+                                        width: ResponsivePixels.size300,
+                                        height: ResponsivePixels.size300,
+                                    }}
+                                />
+
                             </View>
                             <Text style={styles.title}>{item.title}</Text>
                             <Text style={styles.description}>{item.description}</Text>

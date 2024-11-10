@@ -12,6 +12,7 @@ import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 
 interface IHistoryProps {
     qrHistoryProps: any[];
+    isScanMode: boolean;
 }
 
 interface IHistoryState {
@@ -158,8 +159,8 @@ const History = (props: IHistoryProps) => {
                 handleRightColumnClick={navigateToSetting}
             />
             <CustomTabBar
-                leftTabTitle='Scan'
-                rightTabTitle='Create'
+                leftTabTitle={props.isScanMode ? 'Scan' : 'Read'}
+                rightTabTitle={props.isScanMode ? 'Create' : 'Write'}
                 leftTabScreen={() => <HistoryList
                     historyToRender={props.qrHistoryProps}
                     deleteHistoryItem={(item) => handleDeleteHistoryItem(item)}
@@ -178,6 +179,7 @@ const styles = StyleSheet.create({});
 
 const mapStateToProps = (state: any) => ({
     qrHistoryProps: state.qrData.qrHistoryList,
+    isScanMode: state.baseData?.isScanModeEnabled,
 });
 
 const mapDispatchToProps = {};
