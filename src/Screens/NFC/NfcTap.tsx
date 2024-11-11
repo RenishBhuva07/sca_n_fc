@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ImageBackground, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { goBack } from '../../Navigators/Navigator';
+import { goBack, resetNavigation } from '../../Navigators/Navigator';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
@@ -103,7 +103,9 @@ const NfcTap = (props: INfcTapProps) => {
                         <Animatable.Text animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={styles.Title}>Tap your NFC chip</Animatable.Text>
                         <Animatable.Text animation={'bounceIn'} duration={800} easing={'ease-in-out'} style={styles.subTitle}>{subTitle}</Animatable.Text>
                     </View>
-
+                    <Pressable style={styles.btnStyle} onPress={() => resetNavigation("NfcSuccess", { detailItemData: state.detailItemData })} >
+                        <Text style={styles.btnTextStyle}>Done</Text>
+                    </Pressable>
 
                 </ImageBackground>
             </SafeAreaView>
@@ -131,6 +133,20 @@ const styles = StyleSheet.create({
         fontSize: ResponsivePixels.size18,
         fontWeight: 'semibold',
         textAlign: 'center',
+    },
+    btnStyle: {
+        backgroundColor: Colors.DefaultYellow,
+        padding: ResponsivePixels.size15,
+        borderRadius: 6,
+        marginTop: "auto",
+        marginBottom: ResponsivePixels.size30,
+        marginHorizontal: ResponsivePixels.size35,
+    },
+    btnTextStyle: {
+        textAlign: 'center',
+        color: Colors.CharcoalGray,
+        fontSize: ResponsivePixels.size16,
+        fontWeight: 'bold',
     },
 });
 
