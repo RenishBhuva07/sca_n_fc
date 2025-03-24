@@ -8,7 +8,7 @@ import { IMAGES } from '../../Assets/Images';
 import History from '../../Screens/History/History';
 import { connect } from 'react-redux';
 import * as Animatable from "react-native-animatable";
-import { navigateToNfcTap } from '../../Utils/Utils';
+import { navigateToNfcTap, navigateToScanQR } from '../../Utils/Utils';
 import { NFC_OPERATIONS } from '../../Utils/AppConstants';
 
 interface IBottomTabProps {
@@ -121,7 +121,7 @@ const BottomTab = (props: IBottomTabProps) => {
                                 alignItems: 'center',
                                 ...styles.shadowStyle,
                             }}
-                            onPress={isScanMode ? () => { } : () => navigateToNfcTap({ nfcOperation: NFC_OPERATIONS.READ })}
+                            onPress={isScanMode ? () => navigateToScanQR() : () => navigateToNfcTap({ nfcOperation: NFC_OPERATIONS.READ })}
                         >
                             <View style={{
                                 width: ResponsivePixels.size70,

@@ -12,6 +12,7 @@ import Details from '../Screens/Details/Details';
 import ShowQR from '../Screens/ShowQR/ShowQR';
 import NfcTap from '../Screens/NFC/NfcTap';
 import NfcSuccess from '../Screens/NfcSuccess/NfcSuccess';
+import ScanQR from '../Screens/ScanQR/ScanQR';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ const CoreAppStack = () => {
       <Stack.Screen name={'ShowQR'} component={ShowQR} />
       <Stack.Screen name={'NfcTap'} component={NfcTap} />
       <Stack.Screen name={'NfcSuccess'} component={NfcSuccess} />
+      <Stack.Screen name={'ScanQR'} component={ScanQR} />
     </Stack.Navigator>
   );
 };

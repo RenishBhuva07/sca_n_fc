@@ -123,7 +123,7 @@ const Settings = (props: ISettingsProps) => {
                             <Animatable.Image animation={'fadeInLeft'} duration={600} easing={'ease-in-out'} delay={600} style={styles.iconStyle} source={IMAGES.ic_Share} />
                         </View>
                         <View style={styles.titleWrapper}>
-                            <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Share</Animatable.Text>
+                            <Animatable.Text animation={'slideInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.titleText}>Share</Animatable.Text>
                             <Animatable.Text animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.subTitleText}>Share app with others.</Animatable.Text>
                         </View>
                     </Animatable.View>

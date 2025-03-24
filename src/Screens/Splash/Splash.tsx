@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Image, StatusBar } from 'react-native';
 import { IMAGES } from "../../Assets/Images";
 import { Colors } from '../../Assets/Styles/Colors';
-import { FontName } from '../../Assets/Styles/FontName';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
+import { resetNavigation } from '../../Navigators/Navigator';
 
 
 interface ISplashProps {
@@ -14,7 +14,7 @@ const Splash = (props: ISplashProps) => {
 
     useEffect(() => {
         setTimeout(() => {
-            props.navigation.navigate('Intro');
+            resetNavigation('Intro');
         }, 2000);
     }, [])
 
