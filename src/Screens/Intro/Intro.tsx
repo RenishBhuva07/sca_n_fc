@@ -4,6 +4,7 @@ import { IMAGES } from "../../Assets/Images";
 import { Colors } from '../../Assets/Styles/Colors';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { resetNavigation } from '../../Navigators/Navigator';
+import { FontName } from '../../Assets/Styles/FontName';
 const screenWidth = Dimensions.get("window").width;
 
 
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
         fontSize: ResponsivePixels.size32,
         fontWeight: 'bold',
         color: Colors.CharcoalGray,
+        fontFamily: FontName.bold,
     },
     description: {
         fontSize: ResponsivePixels.size16,
@@ -100,6 +102,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: ResponsivePixels.size10,
         marginBottom: ResponsivePixels.size30,
+        fontFamily: FontName.regular,
     },
     button: {
         backgroundColor: Colors.DefaultYellow,

@@ -10,6 +10,7 @@ import { ANIMATIONS } from '../../Assets/Animations';
 import { CustomAnimation } from '../../CommonComponents/CustomAnimation/CustomAnimation';
 import * as Animatable from "react-native-animatable";
 import { NFC_OPERATIONS } from '../../Utils/AppConstants';
+import { FontName } from '../../Assets/Styles/FontName';
 
 interface INfcTapProps {
     route: any;
@@ -125,12 +126,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: ResponsivePixels.size50,
         textAlign: 'center',
+        fontFamily: FontName.bold,
     },
     subTitle: {
         color: Colors.DefaultWhite,
         fontSize: ResponsivePixels.size18,
         fontWeight: 'semibold',
         textAlign: 'center',
+        fontFamily: FontName.medium,
     },
 });
 

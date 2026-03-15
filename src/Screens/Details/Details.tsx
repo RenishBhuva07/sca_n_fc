@@ -6,6 +6,7 @@ import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, navigate } from '../../Navigators/Navigator';
 import { showToast } from '../../Utils/Utils';
 import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
+import { FontName } from '../../Assets/Styles/FontName';
 
 interface IDetailsProps {
     detailItem: any;
@@ -92,10 +93,12 @@ const Details = (props: IDetailsProps) => {
                                     color: Colors.SoftSilver,
                                     marginBottom: ResponsivePixels.size11,
                                     fontSize: ResponsivePixels.size22,
+                                    fontFamily: FontName.bold,
                                 }}>{state.detailItemData?.subTitle}</Text>
                                 <Text style={{
                                     color: Colors.NeutralSilver,
                                     fontSize: ResponsivePixels.size13,
+                                    fontFamily: FontName.regular,
                                 }}>{state.detailItemData?.created_date}</Text>
                             </View>
                         </View>
@@ -103,7 +106,8 @@ const Details = (props: IDetailsProps) => {
                             <Text style={{
                                 color: Colors.SoftSilver,
                                 marginTop: ResponsivePixels.size10,
-                                fontSize: ResponsivePixels.size17
+                                fontSize: ResponsivePixels.size17,
+                                fontFamily: FontName.regular,
                             }}>{state.detailItemData?.title}</Text>
                             <Pressable onPress={() => navigate("ShowQR", { detailItem: state.detailItemData })}>
                                 <Text style={{
@@ -113,6 +117,7 @@ const Details = (props: IDetailsProps) => {
                                     paddingVertical: ResponsivePixels.size14,
                                     fontWeight: 'bold',
                                     letterSpacing: 0.5,
+                                    fontFamily: FontName.bold,
                                 }}>Show QR Code</Text>
                             </Pressable>
                         </View>
@@ -131,6 +136,7 @@ const Details = (props: IDetailsProps) => {
                                 textAlign: 'center',
                                 fontSize: ResponsivePixels.size15,
                                 color: Colors.SoftSilver,
+                                fontFamily: FontName.regular,
                             }}>Share</Text>
                         </Pressable>
                         <Pressable onPress={() => handleCopyLink()}>
@@ -142,6 +148,7 @@ const Details = (props: IDetailsProps) => {
                                 textAlign: 'center',
                                 fontSize: ResponsivePixels.size15,
                                 color: Colors.SoftSilver,
+                                fontFamily: FontName.regular,
                             }}>Copy</Text>
                         </Pressable>
                     </View>

@@ -4,6 +4,7 @@ import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { goBack, resetNavigation } from '../../Navigators/Navigator';
+import { FontName } from '../../Assets/Styles/FontName';
 import QRCode from 'react-native-qrcode-svg';
 import { captureRef } from "react-native-view-shot";
 import Share from "react-native-share";
@@ -26,7 +27,7 @@ const ShowQR = (props: IShowQRProps) => {
 
     const [state, setState] = useState<IShowQRState>({ detailItemData: {}, }),
         [isDownloading, setIsDownloading] = useState(false),
-        viewRef = useRef(),
+        viewRef = useRef<ImageBackground | null>(null),
         handleDownLoadQR = (isShare: boolean) => {
             console.warn("");
             setTimeout(async () => {
@@ -124,10 +125,12 @@ const ShowQR = (props: IShowQRProps) => {
                             <Text style={{
                                 color: Colors.DefaultYellow,
                                 fontSize: ResponsivePixels.size20,
+                                fontFamily: FontName.bold,
                             }}>{state.detailItemData?.subTitle}</Text>
                             <Text style={{
                                 color: Colors.SoftSilver,
                                 fontSize: ResponsivePixels.size14,
+                                fontFamily: FontName.regular,
                             }}>{state.detailItemData?.title}</Text>
                         </View>
                     </Animatable.View>
@@ -164,6 +167,7 @@ const ShowQR = (props: IShowQRProps) => {
                                 textAlign: 'center',
                                 fontWeight: 'bold',
                                 letterSpacing: 1,
+                                fontFamily: FontName.bold,
                             }}>SCAN  QR</Text>
                         </Animatable.View>
                     </View>
@@ -185,6 +189,7 @@ const ShowQR = (props: IShowQRProps) => {
                                     textAlign: 'center',
                                     fontSize: ResponsivePixels.size15,
                                     color: Colors.SoftSilver,
+                                    fontFamily: FontName.regular,
                                 }}>Share</Animatable.Text>
                         </Pressable>
                         <Pressable onPress={() => handleDownLoadQR(false)}>
@@ -200,6 +205,7 @@ const ShowQR = (props: IShowQRProps) => {
                                     textAlign: 'center',
                                     fontSize: ResponsivePixels.size15,
                                     color: Colors.SoftSilver,
+                                    fontFamily: FontName.regular,
                                 }}>Download</Animatable.Text>
                         </Pressable>
                     </View>)}
@@ -247,6 +253,7 @@ const styles = StyleSheet.create({
         color: Colors.CharcoalGray,
         fontSize: ResponsivePixels.size16,
         fontWeight: 'bold',
+        fontFamily: FontName.bold,
     },
 });
 

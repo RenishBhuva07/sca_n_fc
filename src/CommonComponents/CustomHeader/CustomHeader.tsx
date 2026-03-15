@@ -4,6 +4,7 @@ import ResponsivePixels from "../../Assets/Styles/ResponsivePixels";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { setScanMode } from "../../Redux/Actions/Actions";
+import { FontName } from "../../Assets/Styles/FontName";
 
 interface ICustomHeaderProps {
     numberOfFlexColumns: 1 | 2 | 3;
@@ -132,7 +133,8 @@ const styles = StyleSheet.create(({
     title: {
         fontSize: ResponsivePixels.size22,
         color: Colors.SoftSilver,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily: FontName.bold,
     },
 
     container: {
@@ -152,7 +154,8 @@ const styles = StyleSheet.create(({
         fontSize: 18,
         marginHorizontal: 5,
         fontWeight: 'bold',
-        letterSpacing: 1
+        letterSpacing: 1,
+        fontFamily: FontName.bold,
     },
     highlight: {
         color: Colors.DefaultYellow,

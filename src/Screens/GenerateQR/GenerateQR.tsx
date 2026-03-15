@@ -10,6 +10,7 @@ import * as Animatable from "react-native-animatable";
 import { setQRListInfo } from '../../Redux/Actions/Actions';
 import { connect } from 'react-redux';
 import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
+import { FontName } from '../../Assets/Styles/FontName';
 
 interface IGenerateQRProps {
     qr_menu_item: any;
@@ -823,7 +824,14 @@ const GenerateQR = (props: IGenerateQRProps) => {
                     </View>
                 );
             default:
-                return <Animatable.Text animation={'slideInLeft'} duration={800} easing={'ease-in-out'} style={{ color: Colors.DefaultWhite, textAlign: 'center' }}>No form available for this option</Animatable.Text>;
+                return <Animatable.Text
+                    animation={'slideInLeft'}
+                    duration={800}
+                    easing={'ease-in-out'}
+                    style={{ color: Colors.DefaultWhite, textAlign: 'center', fontFamily: FontName.regular }}
+                >
+                    No form available for this option
+                </Animatable.Text>;
         }
     };
 
@@ -931,6 +939,7 @@ const styles = StyleSheet.create({
         fontSize: ResponsivePixels.size18,
         color: Colors.DefaultWhite,
         marginBottom: ResponsivePixels.size10,
+        fontFamily: FontName.medium,
     },
     textInput: {
         height: ResponsivePixels.size40,
@@ -942,6 +951,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         fontSize: ResponsivePixels.size16,
         backgroundColor: Colors.CharcoalGray,
+        fontFamily: FontName.regular,
     },
     btnStyle: {
         backgroundColor: Colors.DefaultYellow,
@@ -954,6 +964,7 @@ const styles = StyleSheet.create({
         color: Colors.CharcoalGray,
         fontSize: ResponsivePixels.size16,
         fontWeight: 'bold',
+        fontFamily: FontName.bold,
     },
 });
 
