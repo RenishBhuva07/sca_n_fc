@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Image, ImageBackground, StatusBar, StyleSheet, Switch, Text, View } from 'react-native';
+import { Image, ImageBackground, StatusBar, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../../Assets/Styles/Colors';
 import { IMAGES } from '../../Assets/Images';
 import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
-import { goBack } from '../../Navigators/Navigator';
+import { goBack, navigate } from '../../Navigators/Navigator';
 import { FontName } from '../../Assets/Styles/FontName';
 import * as Animatable from "react-native-animatable";
 import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
@@ -43,7 +43,7 @@ const Settings = (props: ISettingsProps) => {
                 <View style={styles.sectionContainer}>
                     <Animatable.Text
                         animation={'fadeInUp'}
-                        duration={600}
+                        duration={500}
                         easing={'ease-in-out'}
                         style={{
                             color: Colors.DefaultYellow,
@@ -51,7 +51,7 @@ const Settings = (props: ISettingsProps) => {
                             fontSize: ResponsivePixels.size26,
                         }}>Settings</Animatable.Text>
 
-                    <Animatable.View animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={200} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
+                    <Animatable.View animation={'fadeInUp'} duration={500} easing={'ease-in-out'} delay={200} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
                         <Image style={styles.iconStyle} source={IMAGES.ic_Vibrate} />
                         <View style={styles.titleWrapper}>
                             <Text style={styles.titleText}>Vibrate</Text>
@@ -64,7 +64,7 @@ const Settings = (props: ISettingsProps) => {
                             onValueChange={() => setIsVibrateOnScan(!isVibrateOnScan)}
                         />
                     </Animatable.View>
-                    <Animatable.View animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={400} style={styles.settingItemWrapper}>
+                    <Animatable.View animation={'fadeInUp'} duration={500} easing={'ease-in-out'} delay={400} style={styles.settingItemWrapper}>
                         <Image style={styles.iconStyle} source={IMAGES.ic_Beep} />
                         <View style={styles.titleWrapper}>
                             <Text style={styles.titleText}>Beep</Text>
@@ -82,7 +82,7 @@ const Settings = (props: ISettingsProps) => {
                 <View style={styles.sectionContainer}>
                     <Animatable.Text
                         animation={'fadeInUp'}
-                        duration={600}
+                        duration={500}
                         easing={'ease-in-out'}
                         style={{
                             color: Colors.DefaultYellow,
@@ -90,27 +90,36 @@ const Settings = (props: ISettingsProps) => {
                             fontSize: ResponsivePixels.size26,
                         }}>Support</Animatable.Text>
 
-                    <Animatable.View animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={200} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
-                        <Image style={styles.iconStyle} source={IMAGES.ic_Rate_Us} />
-                        <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Rate Us</Text>
-                            <Text style={styles.subTitleText}>Your best reward to us.</Text>
-                        </View>
-                    </Animatable.View>
-                    <Animatable.View animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={400} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
-                        <Image style={styles.iconStyle} source={IMAGES.ic_Privacy_Policy} />
-                        <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Privacy Policy</Text>
-                            <Text style={styles.subTitleText}>Follow our policies that benefits you.</Text>
-                        </View>
-                    </Animatable.View>
-                    <Animatable.View animation={'fadeInUp'} duration={600} easing={'ease-in-out'} delay={600} style={styles.settingItemWrapper}>
-                        <Image style={styles.iconStyle} source={IMAGES.ic_Share} />
-                        <View style={styles.titleWrapper}>
-                            <Text style={styles.titleText}>Share</Text>
-                            <Text style={styles.subTitleText}>Share app with others.</Text>
-                        </View>
-                    </Animatable.View>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => navigate('RateUs')}>
+                        <Animatable.View animation={'fadeInUp'} duration={500} easing={'ease-in-out'} delay={200} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
+                            <Image style={styles.iconStyle} source={IMAGES.ic_Rate_Us} />
+                            <View style={styles.titleWrapper}>
+                                <Text style={styles.titleText}>Rate Us</Text>
+                                <Text style={styles.subTitleText}>Your best reward to us.</Text>
+                            </View>
+                            <Image style={styles.arrowIcon} source={IMAGES.ic_Arrow} />
+                        </Animatable.View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => navigate('PrivacyPolicy')}>
+                        <Animatable.View animation={'fadeInUp'} duration={500} easing={'ease-in-out'} delay={400} style={{ ...styles.settingItemWrapper, marginBottom: ResponsivePixels.size30 }}>
+                            <Image style={styles.iconStyle} source={IMAGES.ic_Privacy_Policy} />
+                            <View style={styles.titleWrapper}>
+                                <Text style={styles.titleText}>Privacy Policy</Text>
+                                <Text style={styles.subTitleText}>Follow our policies that benefits you.</Text>
+                            </View>
+                            <Image style={styles.arrowIcon} source={IMAGES.ic_Arrow} />
+                        </Animatable.View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => navigate('ShareApp')}>
+                        <Animatable.View animation={'fadeInUp'} duration={500} easing={'ease-in-out'} delay={600} style={styles.settingItemWrapper}>
+                            <Image style={styles.iconStyle} source={IMAGES.ic_Share} />
+                            <View style={styles.titleWrapper}>
+                                <Text style={styles.titleText}>Share</Text>
+                                <Text style={styles.subTitleText}>Share app with others.</Text>
+                            </View>
+                            <Image style={styles.arrowIcon} source={IMAGES.ic_Arrow} />
+                        </Animatable.View>
+                    </TouchableOpacity>
 
                 </View>
             </ImageBackground>
@@ -132,6 +141,12 @@ const styles = StyleSheet.create({
         height: ResponsivePixels.size27,
         resizeMode: 'contain',
         marginEnd: ResponsivePixels.size12,
+    },
+    arrowIcon: {
+        width: ResponsivePixels.size16,
+        height: ResponsivePixels.size16,
+        resizeMode: 'contain',
+        tintColor: Colors.DefaultYellow,
     },
     settingItemWrapper: {
         backgroundColor: Colors.CharcoalGray,

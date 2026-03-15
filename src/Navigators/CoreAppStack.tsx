@@ -8,6 +8,9 @@ import BottomTab from '../CommonComponents/BottomTabBar/BottomTabBar';
 import History from '../Screens/History/History';
 import GenerateQR from '../Screens/GenerateQR/GenerateQR';
 import Settings from '../Screens/Settings/Settings';
+import RateUs from '../Screens/Settings/RateUs';
+import PrivacyPolicy from '../Screens/Settings/PrivacyPolicy';
+import ShareApp from '../Screens/Settings/ShareApp';
 import Details from '../Screens/Details/Details';
 import ShowQR from '../Screens/ShowQR/ShowQR';
 import NfcTap from '../Screens/NFC/NfcTap';
@@ -27,6 +30,9 @@ const CoreAppStack = () => {
       <Stack.Screen name={'History'} component={History} />
       <Stack.Screen name={'GenerateQR'} component={GenerateQR} />
       <Stack.Screen name={'Settings'} component={Settings} />
+      <Stack.Screen name={'RateUs'} component={RateUs} />
+      <Stack.Screen name={'PrivacyPolicy'} component={PrivacyPolicy} />
+      <Stack.Screen name={'ShareApp'} component={ShareApp} />
       <Stack.Screen name={'Details'} component={Details} />
       <Stack.Screen name={'ShowQR'} component={ShowQR} />
       <Stack.Screen name={'NfcTap'} component={NfcTap} />
