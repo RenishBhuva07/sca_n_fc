@@ -5,6 +5,7 @@ import ResponsivePixels from '../../Assets/Styles/ResponsivePixels';
 import { IMAGES } from '../../Assets/Images';
 import { navigate } from '../../Navigators/Navigator';
 import { formatDate } from '../../Utils/Utils';
+import { FontName } from '../../Assets/Styles/FontName';
 
 interface IHistoryListProps {
     historyToRender: string;
@@ -19,7 +20,7 @@ const HistoryList = (props: IHistoryListProps) => {
         historyToRender,
         deleteHistoryItem,
     } = props,
-        historyLength = historyToRender && historyToRender.length,
+        historyLength = historyToRender && (historyToRender as any).length,
         renderHistoryItem = ({ item, index }: any) => {
             return (
                 <Pressable key={index + 1} style={[styles.historyListItem, styles.shadowStyle]} onPress={() => { navigate("Details", { detailItem: item }) }}>
@@ -38,6 +39,7 @@ const HistoryList = (props: IHistoryListProps) => {
                                 flex: 1,
                                 color: Colors.DefaultWhite,
                                 marginBottom: ResponsivePixels.size8,
+                                fontFamily: FontName.medium,
                             }}>{item?.title}</Text>
 
                             <Pressable onPress={() => deleteHistoryItem(item)}>
@@ -54,8 +56,12 @@ const HistoryList = (props: IHistoryListProps) => {
                             <Text style={{
                                 flex: 1,
                                 color: Colors.NeutralSilver,
+                                fontFamily: FontName.regular,
                             }}>{item?.subTitle}</Text>
-                            <Text style={{ color: Colors.NeutralSilver }}>{formatDate(item?.created_date) || "N/A"}</Text>
+                            <Text style={{
+                                color: Colors.NeutralSilver,
+                                fontFamily: FontName.regular,
+                            }}>{formatDate(item?.created_date) || "N/A"}</Text>
                         </View>
 
                     </View>
@@ -88,6 +94,7 @@ const HistoryList = (props: IHistoryListProps) => {
                             <Text style={{
                                 color: Colors.NeutralSilver,
                                 fontSize: ResponsivePixels.size16,
+                                fontFamily: FontName.regular,
                             }}>Your QR History will be here</Text>
                         </View>
                     )

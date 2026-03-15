@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import {
     ImageBackground,
     StatusBar,
@@ -20,6 +20,15 @@ import { FontName } from '../../Assets/Styles/FontName';
 import * as Animatable from 'react-native-animatable';
 import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
 import { showToast } from '../../Utils/Utils';
+import {
+    ArrowRight,
+    Camera,
+    MessageSquare,
+    Nfc,
+    Rocket,
+    Share2,
+    Zap,
+} from 'lucide-react-native';
 
 interface IShareAppProps {}
 
@@ -27,7 +36,7 @@ interface ShareOption {
     id: string;
     title: string;
     subtitle: string;
-    icon: string;
+    icon: ReactNode;
     action: () => void;
 }
 
@@ -37,7 +46,7 @@ const APP_STORE_LINK = Platform.select({
     default: 'https://scanfc.app',
 });
 
-const SHARE_MESSAGE = `🔍 Check out SCA N FC — the ultimate QR Code & NFC scanner app!\n\nScan QR codes, generate custom codes, and read/write NFC tags all in one beautiful app.\n\nDownload now: ${APP_STORE_LINK}`;
+const SHARE_MESSAGE = `Check out SCA N FC — the ultimate QR Code & NFC scanner app!\n\nScan QR codes, generate custom codes, and read/write NFC tags all in one beautiful app.\n\nDownload now: ${APP_STORE_LINK}`;
 
 const ShareApp = (props: IShareAppProps) => {
     const glowAnimation = useRef(new Animated.Value(0)).current;
@@ -118,21 +127,39 @@ const ShareApp = (props: IShareAppProps) => {
             id: 'share_general',
             title: 'Share via...',
             subtitle: 'Choose any app to share',
-            icon: '🚀',
+            icon: (
+                <Rocket
+                    size={ResponsivePixels.size22}
+                    color={Colors.DefaultYellow}
+                    strokeWidth={2}
+                />
+            ),
             action: handleGeneralShare,
         },
         {
             id: 'share_message',
             title: 'Send to a Friend',
             subtitle: 'Share via message or email',
-            icon: '💌',
+            icon: (
+                <MessageSquare
+                    size={ResponsivePixels.size22}
+                    color={Colors.DefaultYellow}
+                    strokeWidth={2}
+                />
+            ),
             action: handleShareViaMessage,
         },
         {
             id: 'share_social',
             title: 'Share on Social Media',
             subtitle: 'Post to your favorite platform',
-            icon: '📱',
+            icon: (
+                <Share2
+                    size={ResponsivePixels.size22}
+                    color={Colors.DefaultYellow}
+                    strokeWidth={2}
+                />
+            ),
             action: handleShareViaSocial,
         },
     ];
@@ -217,13 +244,34 @@ const ShareApp = (props: IShareAppProps) => {
                             </Text>
                             <View style={styles.featureBadgesContainer}>
                                 <View style={styles.featureBadge}>
-                                    <Text style={styles.featureBadgeText}>📷 QR Scan</Text>
+                                    <View style={styles.featureBadgeRow}>
+                                        <Camera
+                                            size={ResponsivePixels.size14}
+                                            color={Colors.SoftSilver}
+                                            strokeWidth={2}
+                                        />
+                                        <Text style={styles.featureBadgeText}>QR Scan</Text>
+                                    </View>
                                 </View>
                                 <View style={styles.featureBadge}>
-                                    <Text style={styles.featureBadgeText}>📲 NFC</Text>
+                                    <View style={styles.featureBadgeRow}>
+                                        <Nfc
+                                            size={ResponsivePixels.size14}
+                                            color={Colors.SoftSilver}
+                                            strokeWidth={2}
+                                        />
+                                        <Text style={styles.featureBadgeText}>NFC</Text>
+                                    </View>
                                 </View>
                                 <View style={styles.featureBadge}>
-                                    <Text style={styles.featureBadgeText}>⚡ Fast</Text>
+                                    <View style={styles.featureBadgeRow}>
+                                        <Zap
+                                            size={ResponsivePixels.size14}
+                                            color={Colors.SoftSilver}
+                                            strokeWidth={2}
+                                        />
+                                        <Text style={styles.featureBadgeText}>Fast</Text>
+                                    </View>
                                 </View>
                             </View>
                         </Animated.View>
@@ -254,14 +302,20 @@ const ShareApp = (props: IShareAppProps) => {
                                 activeOpacity={0.7}
                                 onPress={option.action}
                             >
-                                <Text style={styles.shareOptionIcon}>{option.icon}</Text>
+                                <View style={styles.shareOptionIcon}>{option.icon}</View>
                                 <View style={styles.shareOptionContent}>
                                     <Text style={styles.shareOptionTitle}>{option.title}</Text>
                                     <Text style={styles.shareOptionSubtitle}>
                                         {option.subtitle}
                                     </Text>
                                 </View>
-                                <Text style={styles.shareArrow}>›</Text>
+                                <View style={styles.shareArrow}>
+                                    <ArrowRight
+                                        size={ResponsivePixels.size18}
+                                        color={Colors.DefaultYellow}
+                                        strokeWidth={2}
+                                    />
+                                </View>
                             </TouchableOpacity>
                         </Animatable.View>
                     ))}
@@ -353,6 +407,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: ResponsivePixels.size12,
         paddingVertical: ResponsivePixels.size6,
     },
+    featureBadgeRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: ResponsivePixels.size4,
+    },
     featureBadgeText: {
         color: Colors.SoftSilver,
         fontSize: ResponsivePixels.size12,
@@ -383,8 +442,9 @@ const styles = StyleSheet.create({
         opacity: 0.90,
     },
     shareOptionIcon: {
-        fontSize: ResponsivePixels.size28,
         marginRight: ResponsivePixels.size14,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     shareOptionContent: {
         flex: 1,
@@ -402,9 +462,8 @@ const styles = StyleSheet.create({
         fontFamily: FontName.regular,
     },
     shareArrow: {
-        color: Colors.DefaultYellow,
-        fontSize: ResponsivePixels.size24,
-        fontFamily: FontName.bold,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     footer: {
         alignItems: 'center',

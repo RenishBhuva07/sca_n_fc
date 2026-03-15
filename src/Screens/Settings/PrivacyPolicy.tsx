@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import {
     ImageBackground,
     StatusBar,
@@ -18,6 +18,19 @@ import { goBack } from '../../Navigators/Navigator';
 import { FontName } from '../../Assets/Styles/FontName';
 import * as Animatable from 'react-native-animatable';
 import CustomHeader from '../../CommonComponents/CustomHeader/CustomHeader';
+import {
+    Shield,
+    ClipboardList,
+    Wrench,
+    Lock,
+    Smartphone,
+    Globe2,
+    Scale,
+    RefreshCcw,
+    Mail,
+    ChevronDown,
+    ChevronUp,
+} from 'lucide-react-native';
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -29,7 +42,7 @@ interface IPrivacyPolicyProps {}
 interface PolicySection {
     id: string;
     title: string;
-    icon: string;
+    icon: ReactNode;
     content: string;
 }
 
@@ -37,56 +50,104 @@ const POLICY_SECTIONS: PolicySection[] = [
     {
         id: 'info_collection',
         title: 'Information We Collect',
-        icon: '📋',
+        icon: (
+            <ClipboardList
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'We collect minimal information to provide you with the best scanning experience. This includes:\n\n• Camera access for QR code and barcode scanning\n• NFC permissions for tag reading and writing\n• Device information for app optimization\n• Scan history stored locally on your device\n\nWe do NOT collect personal identification information, location data, or any data from scanned content.',
     },
     {
         id: 'data_usage',
         title: 'How We Use Your Data',
-        icon: '🔧',
+        icon: (
+            <Wrench
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'Your data is used solely to enhance your app experience:\n\n• Scan history is stored locally on your device for your convenience\n• Device information helps us optimize performance across different devices\n• Vibration and beep preferences are saved to personalize your experience\n\nWe never sell, share, or transmit your personal data to third parties.',
     },
     {
         id: 'data_storage',
         title: 'Data Storage & Security',
-        icon: '🔒',
+        icon: (
+            <Lock
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'Your privacy and security are our top priorities:\n\n• All scan data is stored locally on your device\n• No cloud storage or external servers are used for your scan data\n• We implement industry-standard security measures\n• Your data remains under your full control at all times\n\nYou can clear your scan history at any time from the app settings.',
     },
     {
         id: 'permissions',
         title: 'App Permissions',
-        icon: '📱',
+        icon: (
+            <Smartphone
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'SCA N FC requires the following permissions:\n\n• Camera: Required for scanning QR codes and barcodes\n• NFC: Required for reading and writing NFC tags\n• Vibration: Optional, for haptic feedback on successful scans\n• Storage: For saving generated QR codes to your gallery\n\nAll permissions are requested only when needed and can be managed through your device settings.',
     },
     {
         id: 'third_party',
         title: 'Third-Party Services',
-        icon: '🌐',
+        icon: (
+            <Globe2
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'We may use select third-party services to improve the app:\n\n• Analytics: Anonymous usage statistics to improve app performance\n• Crash reporting: To identify and fix bugs quickly\n\nThese services collect anonymized, non-identifiable data only. No personal information is shared with any third party.',
     },
     {
         id: 'your_rights',
         title: 'Your Rights',
-        icon: '⚖️',
+        icon: (
+            <Scale
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'As a user, you have the following rights:\n\n• Right to access your stored data\n• Right to delete all your scan history\n• Right to opt-out of optional data collection\n• Right to revoke app permissions at any time\n• Right to request information about data handling\n\nExercise these rights through the app settings or by contacting our support team.',
     },
     {
         id: 'updates',
         title: 'Policy Updates',
-        icon: '🔄',
+        icon: (
+            <RefreshCcw
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'We may update this privacy policy from time to time:\n\n• You will be notified of any significant changes\n• Continued use of the app constitutes acceptance of updated terms\n• The latest version is always available within the app\n\nLast updated: March 2026',
     },
     {
         id: 'contact',
         title: 'Contact Us',
-        icon: '📧',
+        icon: (
+            <Mail
+                size={ResponsivePixels.size22}
+                color={Colors.DefaultYellow}
+                strokeWidth={2}
+            />
+        ),
         content:
             'If you have questions or concerns about our privacy policy:\n\n• Email: support@scanfc.app\n• In-app: Use the feedback option in Settings\n\nWe aim to respond to all privacy-related inquiries within 48 hours.',
     },
@@ -128,11 +189,23 @@ const PrivacyPolicy = (props: IPrivacyPolicyProps) => {
                     onPress={() => toggleSection(section.id)}
                 >
                     <View style={styles.sectionHeader}>
-                        <Text style={styles.sectionIcon}>{section.icon}</Text>
+                        <View style={styles.sectionIconWrapper}>{section.icon}</View>
                         <Text style={styles.sectionTitle}>{section.title}</Text>
-                        <Text style={styles.expandIcon}>
-                            {isExpanded ? '▲' : '▼'}
-                        </Text>
+                        <View style={styles.expandIcon}>
+                            {isExpanded ? (
+                                <ChevronUp
+                                    size={ResponsivePixels.size16}
+                                    color={Colors.DefaultYellow}
+                                    strokeWidth={2}
+                                />
+                            ) : (
+                                <ChevronDown
+                                    size={ResponsivePixels.size16}
+                                    color={Colors.DefaultYellow}
+                                    strokeWidth={2}
+                                />
+                            )}
+                        </View>
                     </View>
                     {isExpanded && (
                         <View style={styles.sectionContent}>
@@ -193,7 +266,13 @@ const PrivacyPolicy = (props: IPrivacyPolicyProps) => {
                         easing={'ease-in-out'}
                         style={styles.introCard}
                     >
-                        <Text style={styles.introIcon}>🛡️</Text>
+                        <View style={styles.introIconWrapper}>
+                            <Shield
+                                size={ResponsivePixels.size40}
+                                color={Colors.DefaultYellow}
+                                strokeWidth={2}
+                            />
+                        </View>
                         <Text style={styles.introTitle}>Your Privacy Matters</Text>
                         <Text style={styles.introSubtitle}>
                             We are committed to protecting your privacy and ensuring the security of your data.
@@ -257,8 +336,7 @@ const styles = StyleSheet.create({
         marginBottom: ResponsivePixels.size24,
         opacity: 0.92,
     },
-    introIcon: {
-        fontSize: ResponsivePixels.size50,
+    introIconWrapper: {
         marginBottom: ResponsivePixels.size10,
     },
     introTitle: {
@@ -298,9 +376,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    sectionIcon: {
-        fontSize: ResponsivePixels.size22,
+    sectionIconWrapper: {
         marginRight: ResponsivePixels.size12,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     sectionTitle: {
         flex: 1,
@@ -310,8 +389,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     expandIcon: {
-        color: Colors.DefaultYellow,
-        fontSize: ResponsivePixels.size12,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     sectionContent: {
         marginTop: ResponsivePixels.size10,
