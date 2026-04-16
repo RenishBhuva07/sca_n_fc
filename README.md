@@ -10,7 +10,7 @@ Think of it as your digital handshake engine: create, share, save, and manage sm
 
 ---
 
-## Why International Clients Love This Product
+## Why Brands Love This Product
 
 - **Dual-mode advantage**: Switch between QR mode and NFC mode from one unified interface.
 - **Business-ready use cases**: From personal contact sharing to events, campaigns, and lead-gen touchpoints.
@@ -74,21 +74,6 @@ Generate rich QR payloads for high-impact communication:
 
 `Simple for users. Powerful for business outcomes.`
 
----
-
-## Technology Snapshot
-
-- **Framework**: React Native 0.75 + React 18
-- **Navigation**: React Navigation (Stack + Tabs)
-- **State Management**: Redux
-- **UI Layer**: NativeBase + reusable component architecture
-- **QR Rendering**: `react-native-qrcode-svg`
-- **Capture and Export**: `react-native-view-shot`, Camera Roll, File System
-- **Sharing**: Native Share + `react-native-share`
-- **Platforms**: Android and iOS
-
----
-
 ## Business Use Cases
 
 - Digital business cards and networking
@@ -111,22 +96,6 @@ SCA N FC is positioned as a modern utility-plus-engagement product:
 
 This is not just a QR app.  
 This is a smart interaction platform in mobile form.
-
----
-
-## Quick Start (Dev Team)
-
-```bash
-npm install
-npm start
-npm run android
-# or
-npm run ios
-```
-
-Environment setup reference: [React Native Environment Setup](https://reactnative.dev/docs/environment-setup)
-
----
 
 ## Project Vision
 
