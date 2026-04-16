@@ -1,79 +1,136 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# SCA N FC
 
-# Getting Started
+### One app. Two superpowers. Zero friction.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+SCA N FC is a cross-platform mobile experience that blends QR intelligence with NFC-ready workflows in one smooth product.  
+Think of it as your digital handshake engine: create, share, save, and manage smart data moments in seconds.
 
-## Step 1: Start the Metro Server
+`Built for brands that move fast.`  
+`Designed for users who expect instant.`
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+---
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Why International Clients Love This Product
+
+- **Dual-mode advantage**: Switch between QR mode and NFC mode from one unified interface.
+- **Business-ready use cases**: From personal contact sharing to events, campaigns, and lead-gen touchpoints.
+- **Fast adoption curve**: Intuitive onboarding and guided flows reduce learning time.
+- **Cross-platform by default**: Native iOS and Android delivery with one product vision.
+- **Share-first architecture**: Export QR, save to gallery, and distribute instantly.
+
+---
+
+## Product Highlights
+
+### 1) Smart QR Creation Suite
+Generate rich QR payloads for high-impact communication:
+- Text
+- Website URL
+- Wi-Fi credentials
+- Event details
+- Contact card
+- Business profile
+- Location
+- WhatsApp
+- Email
+- Twitter
+- Instagram
+- Telephone
+
+`From "just share info" to "share it like a pro".`
+
+### 2) NFC-Ready Experience
+- Dedicated NFC interaction journey with operation-based flows (Read, Write, Reset).
+- Designed for tap-driven interactions and future scale in smart environments.
+
+`Tap is the new click.`
+
+### 3) Share and Export Engine
+- Render production-ready QR visuals.
+- Save QR images to device gallery.
+- Share through native channel integrations.
+- Copy important payload details with a single action.
+
+### 4) History and Traceability
+- Store generated records for quick recall.
+- Open detail screens for reuse and redisplay.
+- Delete old entries to keep data clean.
+
+### 5) Polished Utility Layer
+- Smooth onboarding (Splash -> Intro -> Main experience).
+- Settings with utility toggles and support links.
+- Rate Us, Share App, and Privacy Policy screens included.
+
+---
+
+## Experience Flow (User Journey)
+
+1. Open app -> smooth splash and intro onboarding.  
+2. Land in core workspace with bottom-tab navigation.  
+3. Pick QR type -> fill guided form -> generate instantly.  
+4. View, save, copy, or share generated result.  
+5. Switch to NFC mode when tap-based operation is needed.  
+6. Revisit history anytime for continuity.
+
+`Simple for users. Powerful for business outcomes.`
+
+---
+
+## Technology Snapshot
+
+- **Framework**: React Native 0.75 + React 18
+- **Navigation**: React Navigation (Stack + Tabs)
+- **State Management**: Redux
+- **UI Layer**: NativeBase + reusable component architecture
+- **QR Rendering**: `react-native-qrcode-svg`
+- **Capture and Export**: `react-native-view-shot`, Camera Roll, File System
+- **Sharing**: Native Share + `react-native-share`
+- **Platforms**: Android and iOS
+
+---
+
+## Business Use Cases
+
+- Digital business cards and networking
+- Retail and product information access
+- Event check-ins and smart invitations
+- Marketing campaign landing links
+- Contactless information distribution
+- Hybrid QR + NFC customer journeys
+
+`Your offline-to-online bridge, now in your pocket.`
+
+---
+
+## Market Positioning
+
+SCA N FC is positioned as a modern utility-plus-engagement product:
+- **Utility-first** enough for daily use
+- **Brand-ready** enough for client-facing campaigns
+- **Scalable** enough for feature expansion and custom enterprise modules
+
+This is not just a QR app.  
+This is a smart interaction platform in mobile form.
+
+---
+
+## Quick Start (Dev Team)
 
 ```bash
-# using npm
+npm install
 npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
 npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
+# or
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Environment setup reference: [React Native Environment Setup](https://reactnative.dev/docs/environment-setup)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+---
 
-## Step 3: Modifying your App
+## Project Vision
 
-Now that you have successfully run the app, let's modify it.
+The vision is to make digital interactions feel instant, memorable, and conversion-friendly across regions and industries.  
+SCA N FC brings scan and tap together so businesses can launch smarter experiences with less operational drag.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+`Global-ready. Trend-forward. Built to scale.`
